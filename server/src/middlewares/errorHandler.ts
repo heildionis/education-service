@@ -5,5 +5,6 @@ export const errorHandler = (err: any, req: Request, res: Response, next: any) =
 	if (err instanceof ApiError) {
 		return res.status(err.status).json({ message: err.message });
 	}
+	console.log(err);
 	return res.status(500).json({ message: 'Unknown error' });
 };

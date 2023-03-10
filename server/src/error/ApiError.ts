@@ -8,8 +8,8 @@ export default class ApiError extends Error {
 		this.errors = errors;
 	}
 
-	static badRequest(errors = []) {
-		return new ApiError(400, 'ERROR: bad request', errors);
+	static badRequest(message: string, errors = []) {
+		return new ApiError(400, `ERROR: bad request ${message}`, errors);
 	}
 
 	static unauthorized() {
