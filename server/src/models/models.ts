@@ -1,17 +1,14 @@
 import { sequelize } from '../db';
 import { DataTypes} from 'sequelize';
+import { UserModel } from './types/user';
+import { TokenModel } from './types/token';
 
 export enum ModelNames {
-    USER = 'user'
+    USER = 'user',
+	TOKEN = 'token'
 }
 
-export enum UserRole {
-    ADMIN = 'ADMIN',
-    USER = 'USER',
-    MODERATOR = 'MODERATOR'
-}
-
-const User = sequelize.define(ModelNames.USER, {
+const User = sequelize.define<UserModel>(ModelNames.USER, {
 	id: {
 		type: DataTypes.INTEGER,
 		primaryKey: true,
@@ -28,9 +25,16 @@ const User = sequelize.define(ModelNames.USER, {
 	email: {
 		type: DataTypes.STRING
 	},
+	isActivated: {
+		type: DataTypes.BOOLEAN,
+		defaultValue: false
+	},
 	role: {
 		type: DataTypes.STRING,
-		defaultValue: UserRole.USER
+		defaultValue: 'USER'
+	},
+	activationLink: {
+		type: DataTypes.STRING
 	},
 	firstname: {
 		type: DataTypes.STRING,
@@ -56,6 +60,15 @@ const User = sequelize.define(ModelNames.USER, {
 	}
 });
 
+const Token = sequelize.define<TokenModel>(ModelNames.TOKEN, {
+	id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+	refreshToken: { type: DataTypes.STRING }
+});
+
+User.hasOne(Token);
+Token.belongsTo(User);
+
 export {
-	User
+	User,
+	Token
 };
