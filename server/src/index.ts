@@ -6,19 +6,23 @@ import path from 'path';
 import cors from 'cors';
 import fileUpload from 'express-fileupload';
 import cookieParser from 'cookie-parser';
+import { Telegraf } from 'telegraf';
+
+import { TelegramContext } from 'types/telegram';
 import { sequelize } from './db';
 import { router } from './routes';
 import { errorHandler } from './middlewares/errorHandler';
-
 import * as models from './models/models';
 
 dotenv.config();
 
 const PORT = process.env.APP_PORT || 5000;
 const ORIGIN = process.env.ORIGIN_URL || 'http://localhost:3000';
+const BOT_TOKEN = process.env.BOT_TOKEN || 'token';
 
 const staticPath = path.resolve(__dirname, 'static');
 
+const bot = new Telegraf<TelegramContext>(BOT_TOKEN);
 const app = express();
 
 app.use(cors({ origin: ORIGIN, credentials: true }));
@@ -37,6 +41,7 @@ const start = async () => {
 		app.listen(PORT, () => {
 			console.log(colors.blue(`Server started on PORT: ${PORT}`));
 		});
+		bot.launch();
 	} catch (error) {
 		console.log(colors.yellow(`Start error ${error}`));
 	}
