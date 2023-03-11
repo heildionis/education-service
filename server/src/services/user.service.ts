@@ -9,7 +9,7 @@ export class UserService {
 	async registration(email: string, username: string, password: string) {
 		const candidate = await User.findOne({ where: { email }});
 		if (candidate) {
-			throw ApiError.badRequest('CANDIDATE IS EXIST');
+			throw ApiError.conflict('User already exist!');
 		}
 
 		const salt = genSaltSync(5);
@@ -26,7 +26,7 @@ export class UserService {
 		const userDto = new UserDto(user);
 		const tokens = tokenService.generateTokens({ ...userDto });
 		if (!tokens) {
-			throw ApiError.badRequest('TOKENS NOT FOUND');
+			throw ApiError.badRequest('Token not found.');
 		}
 
 		await tokenService.saveToken(userDto.id, tokens.refreshToken);
@@ -39,18 +39,18 @@ export class UserService {
 	async loginByEmail(email: string, password: string) {
 		const candidate = await User.findOne({ where: { email }});
 		if (!candidate) {
-			throw ApiError.badRequest('CANDIDATE NOT FOUND');
+			throw ApiError.badRequest('User doesnt exist, please register.');
 		}
 
 		const isCorrectPassword = compare(candidate.password, password);
 		if (!isCorrectPassword) {
-			throw ApiError.badRequest('INCORRECT PASSWORD');
+			throw ApiError.badRequest('Incorrect email or password!');
 		}
 
 		const userDto = new UserDto(candidate);
 		const tokens = tokenService.generateTokens({ ...userDto });
 		if (!tokens) {
-			throw ApiError.badRequest('TOKENS NOT FOUND');
+			throw ApiError.badRequest('Token not found.');
 		}
 
 		await tokenService.saveToken(userDto.id, tokens.refreshToken);        
@@ -63,18 +63,18 @@ export class UserService {
 	async loginByUsername(username: string, password: string) {
 		const candidate = await User.findOne({ where: { username }});
 		if (!candidate) {
-			throw ApiError.badRequest('CANDIDATE NOT FOUND');
+			throw ApiError.badRequest('User doesnt exist, please register.');
 		}
 
 		const isCorrectPassword = compare(candidate.password, password);
 		if (!isCorrectPassword) {
-			throw ApiError.badRequest('INCORRECT PASSWORD');
+			throw ApiError.badRequest('Incorrect email or password!');
 		}
 
 		const userDto = new UserDto(candidate);
 		const tokens = tokenService.generateTokens({ ...userDto });
 		if (!tokens) {
-			throw ApiError.badRequest('TOKENS NOT FOUND');
+			throw ApiError.badRequest('Token not found.');
 		}
 
 		await tokenService.saveToken(userDto.id, tokens.refreshToken);        
@@ -86,7 +86,7 @@ export class UserService {
 	}
 	async logout(refreshToken: string) {
 		if (!refreshToken) {
-			throw ApiError.badRequest('NO TOKEN WHILE LOGOUT');
+			throw ApiError.unauthorized('Unauthorized');
 		}
 
 		const token = await tokenService.removeToken(refreshToken);
@@ -95,7 +95,7 @@ export class UserService {
 	async activate(activationLink: string) {
 		const user = await User.findOne({ where: { activationLink }});
 		if (!user) {
-			throw ApiError.badRequest('USER DOESNT EXIST, CANNOT ACTIVATE');
+			throw ApiError.badRequest('Invalid link.');
 		}
 
 		user.isActivated = true; 
@@ -103,31 +103,31 @@ export class UserService {
 	}
 	async refresh(refreshToken: string) {
 		if (!refreshToken) {
-			throw ApiError.unauthorized();
+			throw ApiError.unauthorized('Unauthorized.');
 		}
 
 		const userData = tokenService.validateRefreshToken(refreshToken);
 		const token = await tokenService.findToken(refreshToken);
 
 		if (!userData || !token) {
-			throw ApiError.unauthorized();
+			throw ApiError.unauthorized('Unauthorized.');
 		}
 
 		if (typeof userData === 'string') {
-			throw ApiError.unauthorized();
+			throw ApiError.unauthorized('Unauthorized.');
 		}
 
 		const user = await User.findOne({ where: { id: userData.id }});
 
 		if (!user) {
-			throw ApiError.badRequest('USER DOESNT EXIST');
+			throw ApiError.unauthorized('User doesnt exist');
 		}
 
 		const userDto = new UserDto(user);
 		const tokens = await tokenService.generateTokens({ ...userDto });
 
 		if (!tokens) {
-			throw ApiError.badRequest('TOKENS NOT FOUND');
+			throw ApiError.badRequest('Token not found.');
 		}
 
 		await tokenService.saveToken(userDto.id, tokens.refreshToken);
