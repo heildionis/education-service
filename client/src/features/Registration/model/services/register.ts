@@ -8,7 +8,7 @@ interface RegistrationProps {
     password: string;
 }
 
-export const registration = createAsyncThunk<User, RegistrationProps, ThunkConfig<string>>(
+export const register = createAsyncThunk<User, RegistrationProps, ThunkConfig<string>>(
     'registration/register',
     async (authData, thunkAPI) => {
         const { dispatch, rejectWithValue, extra } = thunkAPI;

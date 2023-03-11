@@ -1,17 +1,17 @@
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { ChangeEvent, FC, useCallback } from 'react';
 import { useSelector } from 'react-redux';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getRegistrationEmail } from '../model/selectors/getRegistrationEmail/getRegistrationEmail';
 import { getRegistrationPassword } from '../model/selectors/getRegistrationPassword/getRegistrationPassword';
 import { getRegistrationUsername } from '../model/selectors/getRegistrationUsername/getRegistrationUsername';
-import { registration } from '../model/services/registration';
+import { register } from '../model/services/register';
 import { registrationActions } from '../model/slice/registrationSlice';
 
 interface LoginFormProps {
     className?: string;
 }
 
-export const LoginForm: FC<LoginFormProps> = (props) => {
+export const RegistrationForm: FC<LoginFormProps> = (props) => {
     const { className } = props;
     const dispatch = useAppDispatch();
     const email = useSelector(getRegistrationEmail);
@@ -31,7 +31,7 @@ export const LoginForm: FC<LoginFormProps> = (props) => {
     }, [dispatch]);
 
     const onRegistrationClick = async () => {
-        const result = await dispatch(registration({ username, email, password }));
+        await dispatch(register({ username, email, password }));
     };
 
     return (
