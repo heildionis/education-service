@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
-import { userService } from './../services/user.service';
+import { CookieRefreshToken } from 'types/cookies';
+import { CustomRequest, CustomRequestWithCookie } from 'types/express';
+import { userService } from '../services/user.service';
 import ApiError from '../error/ApiError';
 import dotenv from 'dotenv';
-import { CustomRequest, CustomRequestWithCookie } from '../types/express';
-import { CookieRefreshToken } from 'types/cookies';
 
 dotenv.config();
 
@@ -15,7 +15,6 @@ export const Cookies = {
 		lifeTime: 30 * 24 * 60 * 60 * 1000
 	}
 } as const;
-
 
 export interface UserLoginData {
     email?: string;
@@ -39,15 +38,15 @@ export class UserController {
 			const { email, username, password } = req.body;
 
 			let user;
-			if (email) {
+			if (email && !username) {
 				user = await userService.loginByEmail(email, password);
 			}
-			if (username) {
+			if (username && !email) {
 				user = await userService.loginByUsername(username, password);
 			}
 
 			if (!user) {
-				return next(ApiError.badRequest('USER DOESN`T EXIST'));
+				return next(ApiError.notFound('User not found!'));
 			}
 
 			res.cookie(Cookies.REFRESH_TOKEN.name, user.refreshToken,{
@@ -68,7 +67,12 @@ export class UserController {
 		try {
 			const { email, username, password } = req.body;
 
+			if (!email || !username || !password) {
+				return next(ApiError.badRequest('Input required fields!'));
+			}
+
 			const user = await userService.registration(email, username, password);
+
 
 			res.cookie(Cookies.REFRESH_TOKEN.name, user.refreshToken,{
 				maxAge: Cookies.REFRESH_TOKEN.lifeTime,
