@@ -1,0 +1,32 @@
+@import './reset.scss';
+
+body {
+    font-size: 30px;
+    background: #1E1E1E;
+    color: #FFFFFF;
+}
+
+.app {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.wrapper {
+    display: grid;
+    gap: 20px;
+}
+
+input {
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 30px;
+    border: 1px solid black;
+}
+
+button {
+    border-radius: 5px;
+    font-size: 30px;
+    padding: 10px;
+    background-color: rgb(0, 255, 132);
+}
