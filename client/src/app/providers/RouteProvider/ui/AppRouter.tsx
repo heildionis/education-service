@@ -2,6 +2,7 @@ import { getUserAuthData } from 'entities/User';
 import { FC, Suspense, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
+import { PageLoader } from 'widgets/PageLoader';
 import { routeConfig } from '../config/ui/routeConfig';
 
 export const AppRouter: FC = (props) => {
@@ -24,7 +25,7 @@ export const AppRouter: FC = (props) => {
                     key={path}
                     path={path}
                     element={(
-                        <Suspense fallback='loading...'>
+                        <Suspense fallback={<PageLoader />}>
                             <div className='page-wrapper'>{element}</div>
                         </Suspense>
                     )}
