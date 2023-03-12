@@ -1,0 +1,16 @@
+.InputWrapper {
+    display: grid;
+    gap: 5px;
+    width: 100%;
+}
+
+.input {
+    padding: 2px 7px;
+    outline: none;
+    border-radius: 6px;
+    border: 1px solid var(--gray);
+    min-height: 36px;
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    font: var(--font-m);
+}

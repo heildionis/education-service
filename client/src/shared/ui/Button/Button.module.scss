@@ -1,0 +1,10 @@
+.Button {
+    cursor: pointer;
+    color: var(--primary-color);
+    padding: 6px 15px;
+    background: none;
+    font: var(--font-m);
+    color: var(--secondary-color);
+    background-color: var(--inverted-bg-color);
+    border-radius: 6px;
+}
