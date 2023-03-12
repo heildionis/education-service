@@ -51,6 +51,7 @@ module.exports = {
         'react/react-in-jsx-scope': 'off',
         'react/jsx-props-no-spreading': 'warn',
         'react/function-component-definition': 'off',
+        'react/prop-types': 'off',
         'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
         'react-hooks/exhaustive-deps': 'error',
         'jsx-quotes': ['error', 'prefer-single'],
@@ -58,5 +59,7 @@ module.exports = {
         'linebreak-style': 'off',
         'no-shadow': 'off',
         'no-tabs': 'off',
+        'max-len': ['error', { code: 120, tabWidth: 4 }],
+        'react/display-name': 'off', /* Todo: ON RULE */
     },
 };
