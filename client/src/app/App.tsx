@@ -1,4 +1,4 @@
-import { userActions } from 'entities/User';
+import { checkAuth } from 'entities/User';
 import { Suspense, useEffect } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -8,7 +8,7 @@ export const App = () => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(userActions.initAuthData());
+        dispatch(checkAuth());
     }, [dispatch]);
 
     return (
