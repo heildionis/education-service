@@ -35,6 +35,7 @@ module.exports = {
 			'always'
 		],
 		'no-undef': 'off',
-		'@typescript-eslint/ban-types': 'off'
+		'@typescript-eslint/ban-types': 'off',
+		'@typescript-eslint/ban-ts-comment': 'warn'
 	}
 };
