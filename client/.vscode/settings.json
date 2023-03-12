@@ -1,7 +1,4 @@
 {
-    "i18n-ally.localesPaths": ["public/locales", "src/shared/config/i18n"],
-    "i18n-ally.extract.autoDetect": false,
-    "i18n-ally.keystyle": "nested",
     "stylelint.enable": true,
     "css.validate": true,
     "scss.validate": true,
@@ -9,6 +6,7 @@
         "css",
         "scss"
     ],
+    "storyExplorer.storybookConfigDir": "./config/storybook",
+    "storyExplorer.storiesGlobs": "./src",
     "react-i18n.i18nPaths": "public\\locales,src\\shared\\config\\i18n",
 }
-    
