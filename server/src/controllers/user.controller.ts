@@ -73,7 +73,6 @@ export class UserController {
 
 			const user = await userService.registration(email, username, password);
 
-
 			res.cookie(Cookies.REFRESH_TOKEN.name, user.refreshToken,{
 				maxAge: Cookies.REFRESH_TOKEN.lifeTime,
 				httpOnly: true,
