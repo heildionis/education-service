@@ -1,13 +1,19 @@
-import { $api } from 'app/shared/api/api';
+import { $api } from 'shared/api/api';
 import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
 import { userReducer } from 'entities/User';
-import { registrationReducer } from 'features/AuthByUsername';
+import { registrationReducer } from 'features/Registration';
+import { loginReducer } from 'features/AuthBy';
 import { StateSchema, ThunkExtraArg } from './StateSchema';
 
-export const createReduxStore = (initialState: StateSchema) => {
+export const createReduxStore = (
+    initialState: StateSchema,
+    asyncReducers?: DeepPartial<StateSchema>,
+) => {
     const rootReducer: ReducersMapObject<StateSchema> = {
+        ...asyncReducers,
         user: userReducer,
         registration: registrationReducer,
+        login: loginReducer,
     };
 
     const extraArg: ThunkExtraArg = { api: $api };
