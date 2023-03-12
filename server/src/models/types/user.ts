@@ -8,6 +8,7 @@ export interface UserModel extends Model {
 	password: string;
 	email: string;
     isActivated: boolean;
+	activationLink: string;
 	role: UserRole;
 	firstname: string;
 	lastname: string;

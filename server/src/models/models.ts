@@ -9,55 +9,19 @@ export enum ModelNames {
 }
 
 const User = sequelize.define<UserModel>(ModelNames.USER, {
-	id: {
-		type: DataTypes.INTEGER,
-		primaryKey: true,
-		autoIncrement: true
-	},
-	username: {
-		type: DataTypes.STRING,
-		allowNull: false
-	},
-	password: {
-		type: DataTypes.STRING,
-		allowNull: false,
-	},
-	email: {
-		type: DataTypes.STRING
-	},
-	isActivated: {
-		type: DataTypes.BOOLEAN,
-		defaultValue: false
-	},
-	role: {
-		type: DataTypes.STRING,
-		defaultValue: 'USER'
-	},
-	activationLink: {
-		type: DataTypes.STRING
-	},
-	firstname: {
-		type: DataTypes.STRING,
-		allowNull: true,
-	},
-	lastname: {
-		type: DataTypes.STRING,
-		allowNull: true,
-	},
-	avatar: {
-		type: DataTypes.STRING,
-		allowNull: true
-	},
-	country: {
-		type: DataTypes.STRING,
-		allowNull: true,
-	},
-	city: {
-		type: DataTypes.STRING,
-	},
-	birthday: {
-		type: DataTypes.DATE,
-	}
+	id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+	username: { type: DataTypes.STRING, allowNull: false },
+	password: { type: DataTypes.STRING, allowNull: false },
+	email: { type: DataTypes.STRING, allowNull: false },
+	isActivated: { type: DataTypes.BOOLEAN, defaultValue: false },
+	role: { type: DataTypes.STRING, defaultValue: 'USER' },
+	activationLink: { type: DataTypes.STRING },
+	firstname: { type: DataTypes.STRING, allowNull: true },
+	lastname: { type: DataTypes.STRING, allowNull: true },
+	avatar: { type: DataTypes.STRING, allowNull: true },
+	country: { type: DataTypes.STRING, allowNull: true },
+	city: { type: DataTypes.STRING },
+	birthday: { type: DataTypes.DATE }
 });
 
 const Token = sequelize.define<TokenModel>(ModelNames.TOKEN, {
