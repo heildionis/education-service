@@ -12,7 +12,7 @@ export default class ApiError extends Error {
 		return new ApiError(400, message, errors);
 	}
 
-	static unauthorized(message: string, errors= []) {
+	static unauthorized(message = 'Unauthorized', errors= []) {
 		return new ApiError(401, message, errors);
 	}
 
