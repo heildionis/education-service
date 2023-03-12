@@ -1,32 +1,25 @@
 @import './reset.scss';
+@import './variables/global.scss';
+@import './themes/dark.scss';
+@import './themes/light.scss';
+@import './fonts/fonts.scss';
 
 body {
-    font-size: 30px;
-    background: #1E1E1E;
-    color: #FFFFFF;
+    font: var(--font-m);
+    color: var(--primary-color);
+    font-weight: 400;
 }
 
 .app {
-    height: 100vh;
-    display: grid;
-    place-items: center;
+    background: var(--bg-color);
+    min-height: 100vh;
 }
 
-.wrapper {
-    display: grid;
-    gap: 20px;
+.content-page {
+    display: flex;
 }
 
-input {
-    border-radius: 5px;
-    padding: 10px;
-    font-size: 30px;
-    border: 1px solid black;
-}
-
-button {
-    border-radius: 5px;
-    font-size: 30px;
-    padding: 10px;
-    background-color: rgb(0, 255, 132);
+.page-wrapper {
+    flex-grow: 1;
+    padding: 20px;
 }
