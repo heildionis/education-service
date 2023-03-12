@@ -60,6 +60,8 @@ module.exports = {
         'no-shadow': 'off',
         'no-tabs': 'off',
         'max-len': ['error', { code: 120, tabWidth: 4 }],
-        'react/display-name': 'off', /* Todo: ON RULE */
+        'react/display-name': 'off', /* TODO: ON RULE */
+        'jsx-a11y/no-static-element-interactions': 'off',
+        'jsx-a11y/click-events-have-key-events': 'off',
     },
 };
