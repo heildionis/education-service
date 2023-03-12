@@ -1,7 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { checkAuth } from '../services/checkAuth';
 import { User, UserSchema } from '../types/user';
+import { logout } from '../services/logout';
 
-const initialState: UserSchema = {};
+const initialState: UserSchema = {
+    isLoading: false,
+};
 
 export const userSlice = createSlice({
     name: 'user',
@@ -10,16 +14,31 @@ export const userSlice = createSlice({
         setAuthData: (state, action: PayloadAction<User>) => {
             state.authData = action.payload;
         },
-        initAuthData: (state) => {
-            // const user = localStorage.getItem(USER_LOCALSTORAGE_KEY);
-            // if (user) {
-            //     state.authData = JSON.parse(user);
-            // }
-        },
-        logout: (state) => {
-            state.authData = undefined;
-            // localStorage.removeItem(USER_LOCALSTORAGE_KEY);
-        },
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(checkAuth.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(checkAuth.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.authData = action.payload.user;
+            })
+            .addCase(checkAuth.rejected, (state, action) => {
+                state.error = action.payload;
+                state.isLoading = false;
+            })
+            .addCase(logout.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(logout.fulfilled, (state) => {
+                state.isLoading = false;
+                state.authData = undefined;
+            })
+            .addCase(logout.rejected, (state, action) => {
+                state.error = action.payload;
+                state.isLoading = false;
+            });
     },
 });
 

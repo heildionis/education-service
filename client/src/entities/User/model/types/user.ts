@@ -10,4 +10,12 @@ export interface User {
 
 export interface UserSchema {
     authData?: User;
+    isLoading: boolean;
+    error?: string;
+}
+
+export interface UserResponse {
+    user: User;
+    accessToken: string;
+    refreshToken: string;
 }
