@@ -1,19 +1,25 @@
-import { FC, useCallback } from 'react';
+import { FC, memo, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Button } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
+import { classNames } from 'shared/lib/classNames/classNames';
 import { getRegistrationEmail } from '../../model/selectors/getRegistrationEmail/getRegistrationEmail';
 import { getRegistrationPassword } from '../../model/selectors/getRegistrationPassword/getRegistrationPassword';
 import { getRegistrationUsername } from '../../model/selectors/getRegistrationUsername/getRegistrationUsername';
 import { register } from '../../model/services/register';
 import { registrationActions } from '../../model/slice/registrationSlice';
+import cls from './RegistrationForm.module.scss';
 
 interface RegistrationFormProps {
     className?: string;
+    onSuccess: () => void;
 }
 
-export const RegistrationForm: FC<RegistrationFormProps> = (props) => {
-    const { className } = props;
+const RegistrationForm: FC<RegistrationFormProps> = memo((props) => {
+    const { className, onSuccess } = props;
+    const { t } = useTranslation();
     const dispatch = useAppDispatch();
     const email = useSelector(getRegistrationEmail);
     const username = useSelector(getRegistrationUsername);
@@ -32,15 +38,43 @@ export const RegistrationForm: FC<RegistrationFormProps> = (props) => {
     }, [dispatch]);
 
     const onRegistrationClick = async () => {
-        await dispatch(register({ username, email, password }));
+        const result = await dispatch(register({ username, email, password }));
+        if (result.meta.requestStatus === 'fulfilled') {
+            onSuccess();
+        }
     };
 
     return (
-        <>
-            <Input type='text' value={username} onChange={onChangeUsername} />
-            <Input type='text' value={email} onChange={onChangeEmail} />
-            <Input type='text' value={password} onChange={onChangePassword} />
-            <button type='button' onClick={onRegistrationClick}>Зарегистрироваться</button>
-        </>
+        <div className={classNames(cls.RegistrationForm, {}, [className])}>
+            <div className={cls.wrapper}>
+                <Input
+                    placeholder={t<string>('Введите никнейм')}
+                    type='text'
+                    value={username}
+                    onChange={onChangeUsername}
+                />
+                <Input
+                    placeholder={t<string>('Введите почту')}
+                    type='text'
+                    value={email}
+                    onChange={onChangeEmail}
+                />
+                <Input
+                    placeholder={t<string>('Введите пароль')}
+                    type='text'
+                    value={password}
+                    onChange={onChangePassword}
+                />
+            </div>
+            <Button
+                className={cls.btn}
+                type='button'
+                onClick={onRegistrationClick}
+            >
+                Зарегистрироваться
+            </Button>
+        </div>
     );
-};
+});
+
+export default RegistrationForm;
