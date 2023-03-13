@@ -5,6 +5,13 @@
     background: none;
     font: var(--font-m);
     color: var(--secondary-color);
-    background-color: var(--inverted-bg-color);
+    background: var(--inverted-bg-color);
     border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s background ease;
+
+    &:hover {
+        background: var(--inverted-bg-color-hover);
+    }
 }
