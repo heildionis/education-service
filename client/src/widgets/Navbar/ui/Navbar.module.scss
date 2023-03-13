@@ -1,0 +1,15 @@
+.Navbar {
+    height: var(--navbar-height);
+    display: flex;
+    align-items: center;
+    background-color: black;
+    background-color: var(--soft-color);
+}
+
+.container {
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+}
+
+.authBtn {}
