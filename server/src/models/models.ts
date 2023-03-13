@@ -1,18 +1,20 @@
+import { DataTypes } from 'sequelize';
+import { FileModel } from './types/file';
 import { sequelize } from '../db';
-import { DataTypes} from 'sequelize';
 import { UserModel } from './types/user';
 import { TokenModel } from './types/token';
 
 export enum ModelNames {
     USER = 'user',
-	TOKEN = 'token'
+	TOKEN = 'token',
+	FILE = 'file'
 }
 
 const User = sequelize.define<UserModel>(ModelNames.USER, {
 	id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-	username: { type: DataTypes.STRING, allowNull: false },
-	password: { type: DataTypes.STRING, allowNull: false },
-	email: { type: DataTypes.STRING, allowNull: false },
+	username: { type: DataTypes.STRING, allowNull: false, unique: true },
+	email: { type: DataTypes.STRING, allowNull: false, unique: true },
+	password: { type: DataTypes.STRING, allowNull: false, },
 	isActivated: { type: DataTypes.BOOLEAN, defaultValue: false },
 	role: { type: DataTypes.STRING, defaultValue: 'USER' },
 	activationLink: { type: DataTypes.STRING },
@@ -29,10 +31,26 @@ const Token = sequelize.define<TokenModel>(ModelNames.TOKEN, {
 	refreshToken: { type: DataTypes.STRING }
 });
 
+const File = sequelize.define<FileModel>(ModelNames.FILE, {
+	id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
+	name: { type: DataTypes.STRING },
+	type: { type: DataTypes.STRING, allowNull: false },
+	accessLink: { type: DataTypes.STRING },
+	size: { type: DataTypes.INTEGER, defaultValue: 0 },
+	path: { type: DataTypes.STRING, defaultValue: '' },
+});
+
 User.hasOne(Token);
 Token.belongsTo(User);
 
+User.hasMany(File);
+File.belongsTo(User);
+
+File.belongsTo(File, { as: 'parent', foreignKey: 'parentId' });
+File.hasMany(File, { as: 'children', foreignKey: 'parentId' });
+
 export {
 	User,
-	Token
+	Token,
+	File
 };
