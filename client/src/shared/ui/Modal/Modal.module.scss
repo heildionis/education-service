@@ -22,8 +22,8 @@
     border-radius: 6px;
     color: var(--primary-color);
     background: var(--bg-color);
-    transition: 0.3s transform;
-    transform: scale(0.5);
+    transition: 0.2s transform;
+    transform: scaleY(0.5);
     max-width: 60%;
 }
 
@@ -33,12 +33,12 @@
     z-index: var(--modal-z-index);
 
     .content {
-        transform: scale(1);
+        transform: scaleY(1);
     }
 }
 
 .isClosing {
     .content {
-        transform: scale(0.2);
+        transform: scaleY(0);
     }
 }
