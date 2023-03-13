@@ -9,6 +9,7 @@ module.exports = {
         'airbnb',
         'plugin:react/recommended',
         'plugin:@typescript-eslint/recommended',
+        'plugin:storybook/recommended',
     ],
     overrides: [],
     parser: '@typescript-eslint/parser',
@@ -19,12 +20,7 @@ module.exports = {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
-    plugins: [
-        'react',
-        '@typescript-eslint',
-        'react-hooks',
-        'i18next',
-    ],
+    plugins: ['react', '@typescript-eslint', 'react-hooks', 'i18next'],
     globals: {
         __IS_DEV__: true,
         __API__: true,
@@ -35,10 +31,9 @@ module.exports = {
         quotes: ['error', 'single'],
         semi: ['error', 'always'],
         'no-undef': 'off',
-        'react/jsx-filename-extension': [
-            2,
-            { extensions: ['.js', '.jsx', '.tsx'] },
-        ],
+        'react/jsx-filename-extension': [2, {
+            extensions: ['.js', '.jsx', '.tsx'],
+        }],
         'import/extensions': 'off',
         'import/no-unresolved': 'off',
         'import/prefer-default-export': 'off',
@@ -52,15 +47,20 @@ module.exports = {
         'react/jsx-props-no-spreading': 'warn',
         'react/function-component-definition': 'off',
         'react/prop-types': 'off',
-        'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
+        'react-hooks/rules-of-hooks': 'error',
+        // Checks rules of Hooks
         'react-hooks/exhaustive-deps': 'error',
         'jsx-quotes': ['error', 'prefer-single'],
         'no-param-reassign': 'off',
         'linebreak-style': 'off',
         'no-shadow': 'off',
         'no-tabs': 'off',
-        'max-len': ['error', { code: 120, tabWidth: 4 }],
-        'react/display-name': 'off', /* TODO: ON RULE */
+        'max-len': ['error', {
+            code: 120,
+            tabWidth: 4,
+        }],
+        'react/display-name': 'off',
+        /* TODO: ON RULE */
         'jsx-a11y/no-static-element-interactions': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',
     },
