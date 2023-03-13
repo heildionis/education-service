@@ -1,7 +1,7 @@
-import { Request, Response } from 'express';
+import {  Request, Response } from 'express';
 
-import ApiError from '../error/ApiError.js';
-import { tokenService } from '../services/token.service.js';
+import ApiError from '../error/ApiError';
+import { tokenService } from '../services/token.service';
 
 export const authMiddleware = (req: Request, res: Response, next: Function) => {
 	try {
@@ -19,7 +19,6 @@ export const authMiddleware = (req: Request, res: Response, next: Function) => {
 		if (!userData) {
 			return next(ApiError.unauthorized());
 		}
-
 		// @ts-ignore
 		req.user = userData;
 		next();
