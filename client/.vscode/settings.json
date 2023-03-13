@@ -9,4 +9,20 @@
     "storyExplorer.storybookConfigDir": "./config/storybook",
     "storyExplorer.storiesGlobs": "./src",
     "react-i18n.i18nPaths": "public\\locales,src\\shared\\config\\i18n",
+    "react-i18n.sourceLocale": "ru-RU",
+    "i18n-ally.localesPaths": [
+        "public/locales",
+        "src/shared/config/i18n"
+    ],
+    "i18n-ally.keystyle": "flat",
+    "i18n-ally.displayLanguage": "ru",
+    "i18n-ally.sourceLanguage": "ru",
+    // "i18n-ally.localeCountryMap": {
+    //     "en": "br", // show UK's flag instead of US's
+    //     "zh": "cn", // show Chinese flag for 'zh'
+    //     "ko": "ko", // show Korean flag for 'ko'
+    // },
+    "i18n-ally.parserOptions": {
+        
+    }
 }
