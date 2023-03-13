@@ -20,7 +20,7 @@ const PORT = process.env.APP_PORT || 5000;
 const ORIGIN = process.env.ORIGIN_URL || 'http://localhost:3000';
 const BOT_TOKEN = process.env.BOT_TOKEN || 'token';
 
-const staticPath = path.resolve(__dirname, 'static');
+export const staticPath = path.resolve(__dirname, 'static');
 
 const bot = new Telegraf<TelegramContext>(BOT_TOKEN);
 const app = express();
