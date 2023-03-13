@@ -1,0 +1,15 @@
+.LoginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 300px;
+}
+
+.wrapper {
+    display: grid;
+    gap: 15px;
+}
+
+.btn {
+    margin-left: auto;
+}
