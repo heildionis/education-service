@@ -23,7 +23,7 @@ export class TokenService {
 		return userData;
 	}
 	validateRefreshToken(refreshToken: string) {
-		const userData = jwt.verify(refreshToken, accessKey);
+		const userData = jwt.verify(refreshToken, refreshKey);
 		return userData;
 	}
 	async saveToken(userId: number, refreshToken: string) {

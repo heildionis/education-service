@@ -2,8 +2,10 @@ import { tokenService } from './token.service';
 import { UserDto } from './../dtos/user.dto';
 import ApiError from '../error/ApiError';
 import { compare, genSaltSync, hashSync } from 'bcrypt';
-import { User } from '../models/models';
+import { File, User } from '../models/models';
 import { v4 as uuidV4 } from 'uuid';
+import { fileService } from './file.service';
+import colors from 'colors';
 
 export class UserService {
 	async registration(email: string, username: string, password: string) {
@@ -20,8 +22,15 @@ export class UserService {
 			email,
 			username,
 			password: hashPassword, 
-			activationLink 
+			activationLink,
 		});
+
+		// TODO: REMOVE IT
+		await fileService.createDir(File.build({ path: '', userId: user.id, childId: user.id }));
+		const file = await File.create({ type: 'dir' });
+		file.childId = 1;
+		console.log(colors.red(JSON.stringify(file)));
+		console.log(user);
 
 		const userDto = new UserDto(user);
 		const tokens = tokenService.generateTokens({ ...userDto });
@@ -136,6 +145,10 @@ export class UserService {
 			...tokens,
 			user: userDto
 		};
+	}
+	async getAllUsers() {
+		const users = await User.findAll();
+		return users;
 	}
 }
 
