@@ -2,6 +2,7 @@ import React, {
     useState,
     MouseEvent,
     FC,
+    useCallback,
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { generateRandomNumber } from 'shared/lib/generateRandomNumber/generateRandomNumber';
@@ -32,9 +33,9 @@ const ripplePosition = (ripple: Ripple, duration: number, color?: string) => ({
 export const RippleEffect: FC<RippleEffectProps> = ({ className, duration = 800, color }) => {
     const [rippleArray, setRippleArray] = useState<Ripple[]>([]);
 
-    const onAnimationEnd = (key: number) => {
+    const onAnimationEnd = useCallback((key: number) => {
         setRippleArray((rippleElements) => rippleElements.filter((element) => element.key !== key));
-    };
+    }, []);
 
     const addRipple = (event: MouseEvent) => {
         const rippleContainer = event.currentTarget.getBoundingClientRect();
