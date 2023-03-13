@@ -19,7 +19,7 @@ interface RegistrationFormProps {
 
 const RegistrationForm: FC<RegistrationFormProps> = memo((props) => {
     const { className, onSuccess } = props;
-    const { t } = useTranslation();
+    const { t } = useTranslation('auth');
     const dispatch = useAppDispatch();
     const email = useSelector(getRegistrationEmail);
     const username = useSelector(getRegistrationUsername);
@@ -48,7 +48,7 @@ const RegistrationForm: FC<RegistrationFormProps> = memo((props) => {
         <div className={classNames(cls.RegistrationForm, {}, [className])}>
             <div className={cls.wrapper}>
                 <Input
-                    placeholder={t<string>('Введите никнейм')}
+                    placeholder={t<string>('Введите имя пользователя')}
                     type='text'
                     value={username}
                     onChange={onChangeUsername}
@@ -61,7 +61,7 @@ const RegistrationForm: FC<RegistrationFormProps> = memo((props) => {
                 />
                 <Input
                     placeholder={t<string>('Введите пароль')}
-                    type='text'
+                    type='password'
                     value={password}
                     onChange={onChangePassword}
                 />
@@ -71,7 +71,7 @@ const RegistrationForm: FC<RegistrationFormProps> = memo((props) => {
                 type='button'
                 onClick={onRegistrationClick}
             >
-                Зарегистрироваться
+                {t('Зарегистрироваться')}
             </Button>
         </div>
     );
