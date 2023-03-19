@@ -34,6 +34,11 @@ app.use(cookieParser());
 app.use('/api', router);
 app.use(errorHandler);
 
+app.get('/', (req, res) => {
+	console.log('GET');
+	res.send(200).json({ message: 'hello'});
+});
+
 const start = async () => {
 	try {
 		await sequelize.authenticate();

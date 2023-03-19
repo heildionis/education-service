@@ -27,10 +27,6 @@ export class UserService {
 
 		// TODO: REMOVE IT
 		await fileService.createDir(File.build({ path: '', userId: user.id, childId: user.id }));
-		const file = await File.create({ type: 'dir' });
-		file.childId = 1;
-		console.log(colors.red(JSON.stringify(file)));
-		console.log(user);
 
 		const userDto = new UserDto(user);
 		const tokens = tokenService.generateTokens({ ...userDto });
