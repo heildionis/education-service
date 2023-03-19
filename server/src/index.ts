@@ -18,7 +18,7 @@ dotenv.config();
 
 const PORT = process.env.APP_PORT || 5000;
 const ORIGIN = process.env.ORIGIN_URL || 'http://localhost:3000';
-const BOT_TOKEN = process.env.BOT_TOKEN || 'token';
+const BOT_TOKEN = process.env.BOT_TOKEN || '5842709540:AAEK-Xj4vrMpZQyEPl0Feocowmh4yLmDPM0';
 
 export const staticPath = path.resolve(__dirname, 'static');
 
