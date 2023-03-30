@@ -1,13 +1,7 @@
 import { FC, Suspense } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { Modal } from 'shared/ui/Modal/Modal';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { loginActions } from 'features/AuthBy/model/slice/loginSlice';
-import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
-import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
 import { LoginFormAsync } from '../LoginForm/LoginForm.async';
 import cls from './LoginModal.module.scss';
 
@@ -23,13 +17,6 @@ export const LoginModal: FC<LoginModalProps> = (props) => {
         isOpen,
         onClose,
     } = props;
-
-    const dispatch = useAppDispatch();
-
-    if (!isOpen) {
-        dispatch(loginActions.setUsername(''));
-        dispatch(loginActions.setPassword(''));
-    }
 
     return (
         <Modal

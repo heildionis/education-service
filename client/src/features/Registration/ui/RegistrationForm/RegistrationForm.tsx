@@ -1,21 +1,28 @@
-import { FC, memo, useCallback } from 'react';
+import {
+    FC, memo, useCallback, useEffect,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { getRegistrationEmail } from '../../model/selectors/getRegistrationEmail/getRegistrationEmail';
 import { getRegistrationPassword } from '../../model/selectors/getRegistrationPassword/getRegistrationPassword';
 import { getRegistrationUsername } from '../../model/selectors/getRegistrationUsername/getRegistrationUsername';
 import { register } from '../../model/services/register';
-import { registrationActions } from '../../model/slice/registrationSlice';
+import { registrationActions, registrationReducer } from '../../model/slice/registrationSlice';
 import cls from './RegistrationForm.module.scss';
 
 interface RegistrationFormProps {
     className?: string;
     onSuccess: () => void;
 }
+
+const reducers: ReducerList = {
+    registration: registrationReducer,
+};
 
 const RegistrationForm: FC<RegistrationFormProps> = memo((props) => {
     const { className, onSuccess } = props;
@@ -45,35 +52,37 @@ const RegistrationForm: FC<RegistrationFormProps> = memo((props) => {
     };
 
     return (
-        <div className={classNames(cls.RegistrationForm, {}, [className])}>
-            <div className={cls.wrapper}>
-                <Input
-                    placeholder={t<string>('Введите имя пользователя')}
-                    type='text'
-                    value={username}
-                    onChange={onChangeUsername}
-                />
-                <Input
-                    placeholder={t<string>('Введите почту')}
-                    type='text'
-                    value={email}
-                    onChange={onChangeEmail}
-                />
-                <Input
-                    placeholder={t<string>('Введите пароль')}
-                    type='password'
-                    value={password}
-                    onChange={onChangePassword}
-                />
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+            <div className={classNames(cls.RegistrationForm, {}, [className])}>
+                <div className={cls.wrapper}>
+                    <Input
+                        placeholder={t<string>('Введите имя пользователя')}
+                        type='text'
+                        value={username}
+                        onChange={onChangeUsername}
+                    />
+                    <Input
+                        placeholder={t<string>('Введите почту')}
+                        type='text'
+                        value={email}
+                        onChange={onChangeEmail}
+                    />
+                    <Input
+                        placeholder={t<string>('Введите пароль')}
+                        type='password'
+                        value={password}
+                        onChange={onChangePassword}
+                    />
+                </div>
+                <Button
+                    className={cls.btn}
+                    type='button'
+                    onClick={onRegistrationClick}
+                >
+                    {t('Зарегистрироваться')}
+                </Button>
             </div>
-            <Button
-                className={cls.btn}
-                type='button'
-                onClick={onRegistrationClick}
-            >
-                {t('Зарегистрироваться')}
-            </Button>
-        </div>
+        </DynamicModuleLoader>
     );
 });
 
