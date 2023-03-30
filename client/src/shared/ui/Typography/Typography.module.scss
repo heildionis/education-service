@@ -1,0 +1,72 @@
+.Typography {
+    text-decoration: none;
+    line-height: 120%;
+}
+
+.h1 {
+    font-size: var(--font-h1);
+}
+
+.h2 {
+    font-size: var(--font-h2);
+}
+
+.h3 {
+    font-size: var(--font-h3);
+}
+
+.h4 {
+    font-size: var(--font-h4);
+}
+
+.h5 {
+    font-size: var(--font-h5);
+}
+
+.h6 {
+    font-size: var(--font-h6);
+}
+
+.p {
+    font-size: var(--font-p);
+}
+
+.title {
+    font-size: var(--font-title);
+}
+
+.subtitle {
+    font-size: var(--font-subtitle);
+}
+
+.div {
+    font-size: var(--font-h6);
+}
+
+.primary {
+    color: var(--primary-color);
+}
+
+.secondary {
+    color: var(--secondary-color);
+}
+
+.center {
+    text-align: center;
+}
+
+.inherit {
+    text-align: inherit;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+.noWrap {
+    white-space: nowrap;
+}

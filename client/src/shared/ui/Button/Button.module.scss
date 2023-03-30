@@ -10,8 +10,80 @@
     position: relative;
     overflow: hidden;
     transition: 0.3s background ease;
+}
+
+.primary {
+    color: var(--secondary-color);
+    background: var(--inverted-bg-color);
+
+    .ripple span {
+        background-color: var(--secondary-color);
+    }
 
     &:hover {
         background: var(--inverted-bg-color-hover);
     }
+}
+
+.secondary {
+    color: var(--primary-color);
+    background: var(--bg-color);
+
+    .ripple span {
+        background-color: var(--primary-color);
+    }
+
+    &:hover {
+        background: var(--bg-color-hover);
+    }
+}
+
+.outlined {
+    color: var(--primary-color);
+    background: var(--bg-color);
+    border: 1px solid var(--primary-color);
+
+    .ripple span {
+        background-color: var(--primary-color);
+    }
+
+    &:hover {
+        background: var(--bg-color-hover);
+    }
+}
+
+.disabled {
+    opacity: 0.5;
+}
+
+.small {
+    font: var(--font-m);
+}
+
+.medium {
+    font: var(--font-l);
+}
+
+.large {
+    font: var(--font-xl);
+}
+
+.square {
+    padding: 0;
+}
+
+
+.square.small {
+    width: var(--font-line-m);
+    height: var(--font-line-m);
+}
+
+.square.medium {
+    width: var(--font-line-l);
+    height: var(--font-line-l);
+}
+
+.square.large {
+    width: var(--font-line-xl);
+    height: var(--font-line-xl);
 }

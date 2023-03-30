@@ -13,6 +13,7 @@ interface InputProps extends HTMLInputProps {
     className?: string;
     onChange?: (value: string) => void;
     value?: string;
+    fullWidth?: boolean;
 }
 
 export const Input: FC<InputProps> = memo((props) => {
@@ -21,6 +22,7 @@ export const Input: FC<InputProps> = memo((props) => {
         onChange,
         value,
         placeholder,
+        fullWidth = false,
         ...otherProps
     } = props;
 
@@ -32,7 +34,7 @@ export const Input: FC<InputProps> = memo((props) => {
         <div className={classNames(cls.InputWrapper)}>
             {placeholder && <div className={cls.label}>{`${placeholder}`}</div>}
             <input
-                className={classNames(cls.input, {}, [className])}
+                className={classNames(cls.input, { [cls.fullWidth]: fullWidth }, [className])}
                 value={value}
                 onChange={onChangeHandler}
                 {...otherProps}
