@@ -1,6 +1,7 @@
 import { Model } from 'sequelize';
 
 export interface FileModel extends Model {
+    id: number;
     name: string;
     type: string;
     accessLink: string;
