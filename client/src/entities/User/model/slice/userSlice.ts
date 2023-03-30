@@ -5,6 +5,8 @@ import { logout } from '../services/logout';
 
 const initialState: UserSchema = {
     isLoading: false,
+
+    _inited: false,
 };
 
 export const userSlice = createSlice({
@@ -23,6 +25,7 @@ export const userSlice = createSlice({
             .addCase(checkAuth.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.authData = action.payload.user;
+                state._inited = true;
             })
             .addCase(checkAuth.rejected, (state, action) => {
                 state.error = action.payload;
