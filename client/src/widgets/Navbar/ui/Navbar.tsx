@@ -1,4 +1,9 @@
-import { FC, useCallback, useState } from 'react';
+import {
+    FC,
+    memo,
+    useCallback,
+    useState,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { RegistrationModal } from 'features/Registration';
@@ -8,13 +13,15 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button } from 'shared/ui/Button/Button';
 import { Container } from 'shared/lib/components/Container/Container';
 import { LoginModal } from 'features/AuthBy';
+import { TelegramIcon } from 'shared/assets/icons';
+import { Link } from 'react-router-dom';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
    className?: string;
 }
 
-export const Navbar: FC<NavbarProps> = (props) => {
+export const Navbar: FC<NavbarProps> = memo((props) => {
     const { className } = props;
     const { t } = useTranslation('auth');
     const dispatch = useAppDispatch();
@@ -43,10 +50,6 @@ export const Navbar: FC<NavbarProps> = (props) => {
         dispatch(logout());
     }, [dispatch]);
 
-    if (isLoading) {
-        return <>Loading....</>;
-    }
-
     if (isAuth) {
         return (
             <div className={classNames(cls.Navbar, {}, [className])}>
@@ -60,29 +63,36 @@ export const Navbar: FC<NavbarProps> = (props) => {
     return (
         <div className={classNames(cls.Navbar, {}, [className])}>
             <Container className={cls.container}>
-                <RegistrationModal
-                    isOpen={isRegistrationModal}
-                    onClose={onCloseRegistrationModal}
-                />
-                <LoginModal
-                    isOpen={isLoginModal}
-                    onClose={onCloseLoginModal}
-                />
-                <Button
-                    isAnimated={false}
-                    className={cls.authBtn}
-                    onClick={onOpenRegistrationModal}
-                >
-                    {t('Зарегистрироваться')}
-                </Button>
-                <Button
-                    isAnimated={false}
-                    className={cls.authBtn}
-                    onClick={onOpenLoginModal}
-                >
-                    {t('Войти')}
-                </Button>
+                <div>
+                    <Link to='https://t.me/heildionis' target='_blank'>
+                        <TelegramIcon fill='white' />
+                    </Link>
+                </div>
+                <div className={cls.rightSide}>
+                    <Button
+                        isAnimated={false}
+                        className={cls.authBtn}
+                        onClick={onOpenRegistrationModal}
+                    >
+                        {t('Зарегистрироваться')}
+                    </Button>
+                    <Button
+                        isAnimated={false}
+                        className={cls.authBtn}
+                        onClick={onOpenLoginModal}
+                    >
+                        {t('Войти')}
+                    </Button>
+                    <RegistrationModal
+                        isOpen={isRegistrationModal}
+                        onClose={onCloseRegistrationModal}
+                    />
+                    <LoginModal
+                        isOpen={isLoginModal}
+                        onClose={onCloseLoginModal}
+                    />
+                </div>
             </Container>
         </div>
     );
-};
+});
