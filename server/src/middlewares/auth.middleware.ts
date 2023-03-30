@@ -1,10 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
-import { RequestWithUser } from 'types/express';
 
 import ApiError from '../error/ApiError';
 import { tokenService } from '../services/token.service';
 
-export const authMiddleware = (req: RequestWithUser, res: Response, next: NextFunction) => {
+export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
 	try {
 		const authorizationHeader = req.headers.authorization;
 		if (!authorizationHeader) {
