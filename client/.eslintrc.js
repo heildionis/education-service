@@ -11,7 +11,6 @@ module.exports = {
         'plugin:@typescript-eslint/recommended',
         'plugin:storybook/recommended',
     ],
-    overrides: [],
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaFeatures: {
@@ -38,6 +37,7 @@ module.exports = {
         'import/no-unresolved': 'off',
         'import/prefer-default-export': 'off',
         'import/no-extraneous-dependencies': 'off',
+        '@typescript-eslint/ban-ts-comment': 'off',
         'no-unused-vars': 'warn',
         'no-underscore-dangle': 'off',
         'react/jsx-indent': [2, 4],
@@ -48,9 +48,10 @@ module.exports = {
         'react/function-component-definition': 'off',
         'react/prop-types': 'off',
         'react-hooks/rules-of-hooks': 'error',
-        // Checks rules of Hooks
         'react-hooks/exhaustive-deps': 'error',
+        'react/jsx-no-useless-fragment': 'off',
         'jsx-quotes': ['error', 'prefer-single'],
+        'array-callback-return': 'off',
         'no-param-reassign': 'off',
         'linebreak-style': 'off',
         'no-shadow': 'off',
@@ -60,8 +61,17 @@ module.exports = {
             tabWidth: 4,
         }],
         'react/display-name': 'off',
-        /* TODO: ON RULE */
         'jsx-a11y/no-static-element-interactions': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',
     },
+    overrides: [
+        {
+            files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
+            rules: {
+                'i18next/no-literal-string': 'off',
+                'max-len': 'off',
+                'no-console': 'off',
+            },
+        },
+    ],
 };
