@@ -1,10 +1,7 @@
 import { NextFunction, Response } from 'express';
 import { fileService } from '../services/file.service';
 import { File } from '../models/models';
-import colors from 'colors';
 import { UserResponse } from 'types/express';
-import { error } from 'console';
-import ApiError from '../error/ApiError';
 
 export class FileController {
 	async createDir(req: any, res: Response, next: NextFunction) {
