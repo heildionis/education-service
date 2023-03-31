@@ -1,7 +1,7 @@
 import { tokenService } from './token.service';
 import { UserDto } from './../dtos/user.dto';
 import ApiError from '../error/ApiError';
-import { compare, genSaltSync, hashSync } from 'bcrypt';
+import { compare, compareSync, genSaltSync, hash, hashSync } from 'bcrypt';
 import { File, User } from '../models/models';
 import { v4 as uuidV4 } from 'uuid';
 import { fileService } from './file.service';
@@ -15,7 +15,7 @@ export class UserService {
 		}
 
 		const salt = genSaltSync(5);
-		const hashPassword = hashSync(password, salt);
+		const hashPassword = await hash(password, 3);
 		const activationLink = uuidV4();
 
 		const user = await User.create({ 
@@ -25,7 +25,6 @@ export class UserService {
 			activationLink,
 		});
 
-		// TODO: REMOVE IT
 		await fileService.createDir(File.build({ path: '', userId: user.id, childId: user.id }));
 
 		const userDto = new UserDto(user);
@@ -47,7 +46,7 @@ export class UserService {
 			throw ApiError.badRequest('User doesnt exist, please register.');
 		}
 
-		const isCorrectPassword = compare(candidate.password, password);
+		const isCorrectPassword = await compare(password, candidate.password);
 		if (!isCorrectPassword) {
 			throw ApiError.badRequest('Incorrect email or password!');
 		}
@@ -71,7 +70,7 @@ export class UserService {
 			throw ApiError.badRequest('User doesnt exist, please register.');
 		}
 
-		const isCorrectPassword = compare(candidate.password, password);
+		const isCorrectPassword = await compare(password, candidate.password);
 		if (!isCorrectPassword) {
 			throw ApiError.badRequest('Incorrect email or password!');
 		}
