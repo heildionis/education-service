@@ -4,7 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "npx nodemon"
+    "start": "npx nodemon",
+    "lint:ts": "eslint \"**/*.{ts,tsx}\"",
+    "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
