@@ -38,7 +38,7 @@ const start = async () => {
 	try {
 		await sequelize.authenticate();
 		await sequelize.sync();
-		app.listen(5001, () => {
+		app.listen(PORT, () => {
 			console.log(colors.blue(`Server started on PORT: ${PORT}`));
 		});
 		bot.launch();
