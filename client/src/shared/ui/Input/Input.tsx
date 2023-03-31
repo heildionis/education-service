@@ -1,8 +1,10 @@
 import {
     ChangeEvent,
     FC,
+    forwardRef,
     InputHTMLAttributes,
     memo,
+    MutableRefObject,
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
@@ -16,7 +18,7 @@ interface InputProps extends HTMLInputProps {
     fullWidth?: boolean;
 }
 
-export const Input: FC<InputProps> = memo((props) => {
+export const ForwardInput = (forwardRef<HTMLInputElement, InputProps>(((props, ref) => {
     const {
         className,
         onChange,
@@ -34,6 +36,7 @@ export const Input: FC<InputProps> = memo((props) => {
         <div className={classNames(cls.InputWrapper)}>
             {placeholder && <div className={cls.label}>{`${placeholder}`}</div>}
             <input
+                ref={ref}
                 className={classNames(cls.input, { [cls.fullWidth]: fullWidth }, [className])}
                 value={value}
                 onChange={onChangeHandler}
@@ -41,4 +44,6 @@ export const Input: FC<InputProps> = memo((props) => {
             />
         </div>
     );
-});
+})));
+
+export const Input = memo(ForwardInput);
