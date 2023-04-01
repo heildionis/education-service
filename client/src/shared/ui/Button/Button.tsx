@@ -4,7 +4,7 @@ import {
     FC,
     memo,
 } from 'react';
-import { RippleEffect } from 'shared/animations/components';
+import { RippleEffect } from 'shared/animations/components/RippleEffect';
 import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import cls from './Button.module.scss';
 

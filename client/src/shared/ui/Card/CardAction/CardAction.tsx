@@ -1,7 +1,7 @@
 import {
     FC, HTMLAttributes, memo, ReactNode,
 } from 'react';
-import { RippleEffect } from 'shared/animations/components';
+import { RippleEffect } from 'shared/animations/components/RippleEffect';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './CardAction.module.scss';
 
