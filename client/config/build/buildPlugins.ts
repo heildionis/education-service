@@ -20,7 +20,7 @@ export const buildPlugins = (options: BuildOptions): webpack.WebpackPluginInstan
             chunkFilename: 'css/[name].[contenthash:8].css',
         }),
         new BundleAnalyzerPlugin({ openAnalyzer: false }),
-        new ReactRefreshWebpackPlugin(),
+        new ReactRefreshWebpackPlugin({ overlay: false }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ProgressPlugin(),
         new webpack.DefinePlugin({
