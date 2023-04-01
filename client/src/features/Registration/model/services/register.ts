@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { userActions, UserResponse } from 'entities/User';
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import { LOCAL_STORAGE_ACCESS_TOKEN } from 'shared/constants/localStorage';
+import { isAxiosError } from 'axios';
 
 interface RegistrationProps {
     username: string;
@@ -16,10 +17,6 @@ export const register = createAsyncThunk<UserResponse, RegistrationProps, ThunkC
         try {
             const response = await extra.api.post<UserResponse>('/user/register', authData);
 
-            if (!response.data) {
-                throw new Error();
-            }
-
             const { user, accessToken } = response.data;
 
             dispatch(userActions.setAuthData(user));
@@ -27,8 +24,10 @@ export const register = createAsyncThunk<UserResponse, RegistrationProps, ThunkC
 
             return response.data;
         } catch (error) {
-            console.log(error);
-            return rejectWithValue('error');
+            if (isAxiosError(error)) {
+                return rejectWithValue(error.response?.data.message);
+            }
+            return rejectWithValue('Unknown error');
         }
     },
 );

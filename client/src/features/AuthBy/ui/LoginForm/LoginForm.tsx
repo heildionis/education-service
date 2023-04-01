@@ -6,14 +6,17 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
 import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useNavigate } from 'react-router-dom';
+import { RoutePath } from 'shared/config/routes/routes';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
 import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
 import { loginByUsername } from '../../model/services/loginByUsername';
 import cls from './LoginForm.module.scss';
 
-interface LoginFormProps {
+export interface LoginFormProps {
     className?: string;
+    onSuccess: () => void;
 }
 
 const reducers: ReducerList = {
@@ -21,11 +24,12 @@ const reducers: ReducerList = {
 };
 
 const LoginForm: FC<LoginFormProps> = memo((props) => {
-    const { className } = props;
+    const { className, onSuccess } = props;
     const { t } = useTranslation('auth');
     const dispatch = useAppDispatch();
     const username = useSelector(getLoginUsername);
     const password = useSelector(getLoginPassword);
+    const navigate = useNavigate();
 
     const onChangeUsername = useCallback((value: string) => {
         dispatch(loginActions.setUsername(value));
@@ -36,7 +40,11 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
     }, [dispatch]);
 
     const onLoginClick = async () => {
-        await dispatch(loginByUsername({ username, password }));
+        const result = await dispatch(loginByUsername({ username, password }));
+        if (result.meta.requestStatus === 'fulfilled') {
+            onSuccess();
+            navigate(RoutePath.file, { replace: true });
+        }
     };
 
     return (
@@ -50,7 +58,7 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
                     />
                     <Input
                         type='password'
-                        placeholder={t<string>('Введите имя пользователя')}
+                        placeholder={t<string>('Введите пароль')}
                         value={password}
                         onChange={onChangePassword}
                     />
@@ -59,7 +67,7 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
                         type='button'
                         onClick={onLoginClick}
                     >
-                        Войти
+                        {t('Войти')}
                     </Button>
                 </div>
             </div>

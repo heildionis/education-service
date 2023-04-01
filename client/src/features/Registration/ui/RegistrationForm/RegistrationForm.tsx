@@ -1,5 +1,7 @@
 import {
-    FC, memo, useCallback, useEffect,
+    FC,
+    memo,
+    useCallback,
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -8,6 +10,8 @@ import { Button } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useNavigate } from 'react-router-dom';
+import { RoutePath } from 'shared/config/routes/routes';
 import { getRegistrationEmail } from '../../model/selectors/getRegistrationEmail/getRegistrationEmail';
 import { getRegistrationPassword } from '../../model/selectors/getRegistrationPassword/getRegistrationPassword';
 import { getRegistrationUsername } from '../../model/selectors/getRegistrationUsername/getRegistrationUsername';
@@ -31,6 +35,7 @@ const RegistrationForm: FC<RegistrationFormProps> = memo((props) => {
     const email = useSelector(getRegistrationEmail);
     const username = useSelector(getRegistrationUsername);
     const password = useSelector(getRegistrationPassword);
+    const navigate = useNavigate();
 
     const onChangeUsername = useCallback((value: string) => {
         dispatch(registrationActions.setUsername(value));
@@ -48,6 +53,7 @@ const RegistrationForm: FC<RegistrationFormProps> = memo((props) => {
         const result = await dispatch(register({ username, email, password }));
         if (result.meta.requestStatus === 'fulfilled') {
             onSuccess();
+            navigate(RoutePath.file, { replace: true });
         }
     };
 
