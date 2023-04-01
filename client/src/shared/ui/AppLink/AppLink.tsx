@@ -8,7 +8,7 @@ type AppLinkVariant = 'primary' | 'secondary';
 interface AppLinkProps extends LinkProps {
     className?: string;
     children: ReactNode;
-    variant: AppLinkVariant;
+    variant?: AppLinkVariant;
 }
 
 export const AppLink: FC<AppLinkProps> = memo((props: AppLinkProps) => {
