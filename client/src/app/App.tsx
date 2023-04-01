@@ -1,13 +1,15 @@
-import { checkAuth } from 'entities/User';
+import { checkAuth, getUserInited } from 'entities/User';
 import { Suspense, useEffect } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Container } from 'shared/lib/components/Container/Container';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Navbar } from 'widgets/Navbar';
+import { useSelector } from 'react-redux';
 import { AppRouter } from './providers/RouteProvider/ui/AppRouter';
 
 export const App = () => {
     const dispatch = useAppDispatch();
+    const inited = useSelector(getUserInited);
 
     useEffect(() => {
         dispatch(checkAuth());
@@ -17,11 +19,13 @@ export const App = () => {
         <div className={classNames('app')}>
             <Suspense fallback=''>
                 <Navbar />
-                <Container>
-                    <div className='content-page'>
-                        <AppRouter />
-                    </div>
-                </Container>
+                <div className='content-page'>
+                    {inited && (
+                        <Container>
+                            <AppRouter />
+                        </Container>
+                    )}
+                </div>
             </Suspense>
         </div>
     );
