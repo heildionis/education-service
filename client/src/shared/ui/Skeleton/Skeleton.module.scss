@@ -1,0 +1,33 @@
+.Skeleton {
+    animation: pulse 0.8s linear infinite alternate;
+}
+
+@keyframes pulse {
+    0% {
+        background-color: var(--skeleton-color-from);
+    }
+
+    100% {
+        background-color: var(--skeleton-color-to);
+    }
+}
+
+.text {
+    &::before {
+        content: 'sk';
+        opacity: 0;
+        font-size: inherit;
+    }
+}
+
+.rectangular {
+    border-radius: none;
+}
+
+.circular {
+    border-radius: 100%;
+}
+
+.rounded {
+    border-radius: 5px;
+}
