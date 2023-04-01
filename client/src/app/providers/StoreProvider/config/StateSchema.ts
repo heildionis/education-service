@@ -8,6 +8,7 @@ import {
 import { AxiosInstance } from 'axios';
 import { UserSchema } from 'entities/User';
 import { LoginSchema } from 'features/AuthBy';
+import { FileViewSchema } from 'features/FileViewSelector';
 import { RegistrationSchema } from 'features/Registration';
 
 export interface StateSchema {
@@ -16,6 +17,7 @@ export interface StateSchema {
     // Async reducers
     login?: LoginSchema;
     registration?: RegistrationSchema;
+    fileView?: FileViewSchema
 }
 
 export type StateSchemaKey = keyof StateSchema;
