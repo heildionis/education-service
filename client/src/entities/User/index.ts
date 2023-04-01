@@ -1,3 +1,5 @@
+export { getUserInited } from './model/selectors/getUserInited/getUserInited';
+
 export { logout } from './model/services/logout';
 
 export { checkAuth } from './model/services/checkAuth';
