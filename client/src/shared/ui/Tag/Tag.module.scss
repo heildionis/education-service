@@ -1,0 +1,78 @@
+.Tag {
+    border-radius: 5px;
+}
+
+.disabled {
+    opacity: 0.7;
+}
+
+.small {
+    padding: 1px;
+}
+
+.medium {
+    padding: 3px 5px;
+}
+
+.large {
+    padding: 7px 10px;
+}
+
+.outlined {
+    &.primary {
+        color: var(--primary-color);
+        border: 1px solid var(--primary-color);
+    }
+
+    &.secondary {
+        color: var(--secondary-color);
+        border: 1px solid var(--secondary-color);
+    }
+
+    &.error {
+        color: var(--error-color);
+        border: 1px solid var(--error-color);
+    }
+
+    &.info {
+        color: var(--info-color);
+        border: 1px solid var(--info-color);
+    }
+
+    &.success {
+        color: var(--success-color);
+        border: 1px solid var(--success-color);
+    }
+
+    &.warning {
+        color: var(--warning-color);
+        border: 1px solid var(--warning-color);
+    }
+}
+
+
+.filled {
+    &.primary {
+        background: var(--primary-color);
+    }
+
+    &.secondary {
+        background: var(--secondary-color);
+    }
+
+    &.error {
+        background: var(--error-color);
+    }
+
+    &.info {
+        background: var(--info-color);
+    }
+
+    &.success {
+        background: var(--success-color);
+    }
+
+    &.warning {
+        background: var(--warning-color);
+    }
+}
