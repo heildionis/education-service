@@ -51,6 +51,7 @@ module.exports = {
         'react-hooks/exhaustive-deps': 'error',
         'react/jsx-no-useless-fragment': 'off',
         'jsx-quotes': ['error', 'prefer-single'],
+        'react/no-array-index-key': 'off',
         'array-callback-return': 'off',
         'no-param-reassign': 'off',
         'linebreak-style': 'off',
