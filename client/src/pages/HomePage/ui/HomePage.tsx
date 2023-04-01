@@ -1,8 +1,15 @@
-import { FC, memo } from 'react';
-import { BMSTUIcon } from 'shared/assets/icons';
+import {
+    FC,
+    memo,
+} from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Card, CardAction } from 'shared/ui/Card';
-import { Typography } from 'shared/ui/Typography/Typography';
+import { Container } from 'shared/lib/components/Container/Container';
+import { FileViewSelector, getFileView } from 'features/FileViewSelector';
+import { FileEntity } from 'entities/File/model/types/file';
+import { useSelector } from 'react-redux';
+import { Page } from 'widgets/Page';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { RoutePath } from 'shared/config/routes/routes';
 import cls from './HomePage.module.scss';
 
 interface HomePageProps {
@@ -11,31 +18,16 @@ interface HomePageProps {
 
 const HomePage: FC<HomePageProps> = memo((props) => {
     const { className } = props;
+    const view = useSelector(getFileView);
 
     return (
-        <div className={classNames(cls.HomePage, {}, [className])}>
-            <Card className={cls.cardWrapper}>
-                <CardAction className={cls.card}>
-                    <BMSTUIcon style={{ fill: 'white' }} height={250} width={250} />
-                    <div>
-                        <Typography
-                            variant='h2'
-                            color='secondary'
-                            align='center'
-                        >
-                            КФ МГТУ
-                        </Typography>
-                        <Typography
-                            variant='h5'
-                            color='secondary'
-                            align='center'
-                        >
-                            им. Н. Э. Баумана
-                        </Typography>
-                    </div>
-                </CardAction>
-            </Card>
-        </div>
+        <Page className={classNames(cls.HomePage, {}, [className])}>
+            <Container>
+                <FileViewSelector />
+                <div className={cls.list} />
+                <AppLink to={RoutePath.file} variant='primary'>File</AppLink>
+            </Container>
+        </Page>
     );
 });
 

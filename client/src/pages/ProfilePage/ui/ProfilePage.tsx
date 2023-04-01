@@ -1,6 +1,7 @@
 import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { Page } from 'widgets/Page';
 import cls from './ProfilePage.module.scss';
 
 interface ProfilePageProps {
@@ -12,9 +13,9 @@ const ProfilePage: FC<ProfilePageProps> = memo((props) => {
     const { t } = useTranslation('profile');
 
     return (
-        <div className={classNames(cls.profilePage, {}, [className])}>
+        <Page className={classNames(cls.profilePage, {}, [className])}>
             {t('Страница профиля')}
-        </div>
+        </Page>
     );
 });
 
