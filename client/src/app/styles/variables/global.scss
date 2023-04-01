@@ -20,7 +20,7 @@
     --font-title: 30px;
     --font-subtitle: 22px;
 
-    --navbar-height: 70px;
+    --navbar-height: 60px;
 
     --modal-z-index: 10;
 
@@ -29,4 +29,9 @@
     --gray: #A2A3A3;
     --gray-light: #6c757d;
     --gray-dark: #343a40;
+
+    --error-color: #dc3545;
+    --info-color: #0dcaf0;
+    --success-color: #198754;
+    --warning-color: #ffc107;
 }
