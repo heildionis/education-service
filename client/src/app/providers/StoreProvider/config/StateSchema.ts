@@ -10,14 +10,18 @@ import { UserSchema } from 'entities/User';
 import { LoginSchema } from 'features/AuthBy';
 import { FileViewSchema } from 'features/FileViewSelector';
 import { RegistrationSchema } from 'features/Registration';
+import { ScrollControllerSchema } from 'features/ScrollController';
+import { FilesTableSchema } from 'widgets/FilesTable';
 
 export interface StateSchema {
     user: UserSchema;
+    scrollController: ScrollControllerSchema;
 
     // Async reducers
     login?: LoginSchema;
     registration?: RegistrationSchema;
-    fileView?: FileViewSchema
+    fileView?: FileViewSchema;
+    filesTable?: FilesTableSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
