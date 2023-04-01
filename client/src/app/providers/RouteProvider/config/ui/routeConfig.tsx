@@ -1,4 +1,5 @@
 import { AboutPage } from 'pages/AboutPage';
+import { FilesPage } from 'pages/FilesPage';
 import { HomePage } from 'pages/HomePage';
 import { NotFoundPage } from 'pages/NotFoundPage';
 import { ProfilePage } from 'pages/ProfilePage';
@@ -21,6 +22,11 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
     [AppRoutes.PROFILE]: {
         path: RoutePath.profile,
         element: <ProfilePage />,
+        authOnly: true,
+    },
+    [AppRoutes.FILES]: {
+        path: RoutePath.file,
+        element: <FilesPage />,
         authOnly: true,
     },
     [AppRoutes.NOT_FOUND]: {
