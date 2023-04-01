@@ -37,7 +37,7 @@ export const RippleEffect: FC<RippleEffectProps> = ({ className, duration = 800,
         setRippleArray((rippleElements) => rippleElements.filter((element) => element.key !== key));
     }, []);
 
-    const addRipple = (event: MouseEvent) => {
+    const addRipple = useCallback((event: MouseEvent) => {
         const rippleContainer = event.currentTarget.getBoundingClientRect();
         const isWidthContainerGreater = rippleContainer.width > rippleContainer.height;
         const size = isWidthContainerGreater ? rippleContainer.width : rippleContainer.height;
@@ -55,7 +55,7 @@ export const RippleEffect: FC<RippleEffectProps> = ({ className, duration = 800,
         };
 
         setRippleArray([...rippleArray, newRipple]);
-    };
+    }, [rippleArray]);
 
     return (
         <div
