@@ -15,6 +15,8 @@ import { Container } from 'shared/lib/components/Container/Container';
 import { LoginModal } from 'features/AuthBy';
 import { TelegramIcon } from 'shared/assets/icons';
 import { Link } from 'react-router-dom';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { RoutePath } from 'shared/config/routes/routes';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -54,6 +56,7 @@ export const Navbar: FC<NavbarProps> = memo((props) => {
         return (
             <div className={classNames(cls.Navbar, {}, [className])}>
                 <Container className={cls.container}>
+                    <AppLink to={RoutePath.file}>{t('Файлы')}</AppLink>
                     <Button className={cls.authBtn} onClick={onClickLogout}>Выйти</Button>
                 </Container>
             </div>
