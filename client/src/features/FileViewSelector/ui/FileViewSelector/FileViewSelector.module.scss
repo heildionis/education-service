@@ -1,0 +1,11 @@
+.FileViewSelector {
+    display: flex;
+}
+
+.icon {
+    fill: var(--soft-color);
+}
+
+.selected {
+    fill: var(--primary-color);
+}
