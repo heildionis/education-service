@@ -1,0 +1,82 @@
+.FileCard {
+
+    &:hover .icon {
+        transition: all 0.2s;
+        fill: var(--primary-color-hover);
+    }
+
+    &:hover .label {
+        transition: all 0.2s;
+        color: var(--primary-color-hover);
+    }
+}
+
+.label {
+    color: var(--soft-color);
+}
+
+.tile {
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    gap: 30px;
+    height: 70px;
+
+    .label {
+        font-size: 14px;
+    }
+}
+
+.list {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border-radius: 10px;
+    padding: 0 10px;
+    gap: 20px;
+    cursor: pointer;
+
+    .icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .label {
+        flex: 0 0 30%;
+    }
+
+    .size {
+        flex: 0 0 10%;
+    }
+
+    .date {
+        flex: 0 0 15%;
+        color: var(--soft-color);
+    }
+}
+
+.popover {
+    position: relative;
+    margin-left: auto;
+}
+
+.panel {
+    position: absolute;
+    bottom: -47px;
+    left: -5px;
+    z-index: 10;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid var(--primary-color);
+    background: aliceblue;
+}
+
+.button {
+    background: none;
+}
+
+.link {
+    display: flex;
+    gap: 20px;
+    flex: 0 0 40%;
+}
