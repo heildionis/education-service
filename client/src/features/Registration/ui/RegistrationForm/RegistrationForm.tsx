@@ -53,7 +53,7 @@ const RegistrationForm: FC<RegistrationFormProps> = memo((props) => {
         const result = await dispatch(register({ username, email, password }));
         if (result.meta.requestStatus === 'fulfilled') {
             onSuccess();
-            navigate(RoutePath.file, { replace: true });
+            navigate(RoutePath.files, { replace: true });
         }
     };
 

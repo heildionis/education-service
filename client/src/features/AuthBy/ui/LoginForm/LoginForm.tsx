@@ -43,7 +43,7 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
         const result = await dispatch(loginByUsername({ username, password }));
         if (result.meta.requestStatus === 'fulfilled') {
             onSuccess();
-            navigate(RoutePath.file, { replace: true });
+            navigate(RoutePath.files, { replace: true });
         }
     };
 
