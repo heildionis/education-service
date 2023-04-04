@@ -1,0 +1,35 @@
+.FileOptions {
+    position: relative;
+}
+
+.btn {
+    background: none;
+}
+
+.items {
+
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 30px;
+    left: 0;
+    z-index: 10;
+}
+
+.cardWrapper {}
+
+.card {
+    width: 175px;
+    padding: 10px;
+    background: var(--inverted-bg-color);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.deleteBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
