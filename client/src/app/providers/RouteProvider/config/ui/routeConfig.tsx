@@ -25,7 +25,7 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
         authOnly: true,
     },
     [AppRoutes.FILES]: {
-        path: RoutePath.file,
+        path: RoutePath.files,
         element: <FilesPage />,
         authOnly: true,
     },
