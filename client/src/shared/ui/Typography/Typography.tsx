@@ -8,7 +8,7 @@ import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import cls from './Typography.module.scss';
 
 export type TypographyAlign = 'center' | 'left' | 'right' | 'inherit'
-export type TypographyColor = 'primary' | 'secondary'
+export type TypographyColor = 'primary' | 'secondary' | 'inverted'
 export type TypographyVariant = 'title' |'subtitle' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'div'
 
 interface TypographyProps extends HTMLAttributes<HTMLElement> {
