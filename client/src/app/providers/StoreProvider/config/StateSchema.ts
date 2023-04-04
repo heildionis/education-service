@@ -8,10 +8,12 @@ import {
 import { AxiosInstance } from 'axios';
 import { UserSchema } from 'entities/User';
 import { LoginSchema } from 'features/AuthBy';
+import { CreateDirSchema } from 'features/CreateDir';
+import { FileUploadSchema } from 'features/FileUpload';
 import { FileViewSchema } from 'features/FileViewSelector';
 import { RegistrationSchema } from 'features/Registration';
 import { ScrollControllerSchema } from 'features/ScrollController';
-import { FilesTableSchema } from 'widgets/FilesTable';
+import { FilesPageSchema } from 'pages/FilesPage';
 
 export interface StateSchema {
     user: UserSchema;
@@ -21,7 +23,9 @@ export interface StateSchema {
     login?: LoginSchema;
     registration?: RegistrationSchema;
     fileView?: FileViewSchema;
-    filesTable?: FilesTableSchema;
+    filesPage?: FilesPageSchema;
+    createDir?: CreateDirSchema;
+    fileUpload?: FileUploadSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
