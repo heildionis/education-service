@@ -62,8 +62,10 @@ module.exports = {
             tabWidth: 4,
         }],
         'react/display-name': 'off',
+        'no-unsafe-optional-chaining': 'off',
         'jsx-a11y/no-static-element-interactions': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',
+        'jsx-a11y/label-has-associated-control': 'off',
     },
     overrides: [
         {
