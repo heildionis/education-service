@@ -1,0 +1,27 @@
+.Sidebar {
+    height: 865px;
+    width: 250px;
+    padding: 10px;
+    border: 1px solid var(--primary-color);
+    background: var(--inverted-bg-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.logoWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    width: 250px;
+    height: 230px;
+}
+
+.bottom {
+    display: grid;
+    gap: 10px;
+}
