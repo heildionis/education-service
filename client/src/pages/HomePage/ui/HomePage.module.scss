@@ -13,3 +13,17 @@
     border-radius: 10px;
     padding: 10px;
 }
+
+.popover {
+    padding: 20px;
+    border-radius: 6px;
+    max-width: 400px;
+    display: flex;
+    border: 1px solid var(--primary-color);
+}
+
+.item {}
+
+.button {
+    background: none;
+}
