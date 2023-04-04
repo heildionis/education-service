@@ -2,7 +2,7 @@ export enum AppRoutes {
     HOME = 'home',
     ABOUT = 'about',
     PROFILE = 'profile',
-    FILES = 'file',
+    FILES = 'files',
     NOT_FOUND = 'notFound'
 }
 
