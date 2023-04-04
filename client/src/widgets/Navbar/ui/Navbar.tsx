@@ -56,7 +56,7 @@ export const Navbar: FC<NavbarProps> = memo((props) => {
         return (
             <div className={classNames(cls.Navbar, {}, [className])}>
                 <Container className={cls.container}>
-                    <AppLink to={RoutePath.file}>{t('Файлы')}</AppLink>
+                    <AppLink to={RoutePath.files}>{t('Файлы')}</AppLink>
                     <Button className={cls.authBtn} onClick={onClickLogout}>Выйти</Button>
                 </Container>
             </div>
