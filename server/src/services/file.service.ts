@@ -46,11 +46,11 @@ export class FileService {
 	async uploadFile(file: any, user: UserResponse, parentId: number) {
 		const parentDir = await File.findOne({ where: { id: parentId }});
 
-		if (!parentDir) {
-			throw ApiError.conflict('Parent directory does not exist');
-		}
+		// if (!parentDir) {
+		// 	throw ApiError.conflict('Parent directory does not exist');
+		// }
 
-		this.moveFile(parentDir, user, file);
+		this.moveFile(user, file, parentDir);
 
 		const type = this.getFileType(file);
 		
@@ -91,7 +91,7 @@ export class FileService {
 		}
 		throw ApiError.badRequest('File not found');
 	}
-	moveFile(parentDir: FileModel, user: UserResponse, file: any) {
+	moveFile(user: UserResponse, file: any, parentDir?: FileModel | null) {
 		let path;
 		if (parentDir) {
 			path = `${staticFilePath}\\${user.id}\\${parentDir.path}\\${file.name}`;
