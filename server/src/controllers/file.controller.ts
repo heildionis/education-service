@@ -73,12 +73,7 @@ export class FileController {
 			const user = req.user;
 			const parentId = req.query.parentId;
 
-			let files;
-			if (parentId) {
-				files = await File.findAll({ where: { userId: user.id, parentId }});
-			} else {
-				files  = await File.findAll({ where: { userId: user.id }});
-			}
+			const files = await File.findAll({ where: { userId: user.id, parentId: parentId ? parentId : null }});
 
 			return res.json({files});
 		} catch (error) {
