@@ -38,6 +38,7 @@ module.exports = {
         'import/prefer-default-export': 'off',
         'import/no-extraneous-dependencies': 'off',
         '@typescript-eslint/ban-ts-comment': 'off',
+        '@typescript-eslint/no-var-requires': 'off',
         'no-unused-vars': 'warn',
         'no-underscore-dangle': 'off',
         'react/jsx-indent': [2, 4],
