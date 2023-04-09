@@ -1,14 +1,7 @@
-import { PayloadAction, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-
-import { FileEntity } from 'entities/File';
-import { StateSchema } from 'app/providers/StoreProvider';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { FilesPageSchema } from '../types/FilesPageSchema';
-import { fetchFileList } from '../services/fetchFileList';
 
 const initialState: FilesPageSchema = {
-    data: undefined,
-    isLoading: false,
-    error: undefined,
     currentDir: null,
     dirStack: [],
 };
@@ -29,24 +22,6 @@ export const filesPageSlice = createSlice({
                 state.currentDir = backDirId;
             }
         },
-    },
-    extraReducers: (builder) => {
-        builder
-            .addCase(fetchFileList.pending, (state) => {
-                state.error = undefined;
-                state.isLoading = true;
-            })
-            .addCase(fetchFileList.fulfilled, (
-                state,
-                action,
-            ) => {
-                state.isLoading = false;
-                state.data = action.payload;
-            })
-            .addCase(fetchFileList.rejected, (state, action) => {
-                state.isLoading = false;
-                state.error = action.payload;
-            });
     },
 });
 

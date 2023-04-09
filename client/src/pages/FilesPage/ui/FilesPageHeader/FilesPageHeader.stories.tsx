@@ -9,7 +9,7 @@ export default {
     },
 } as ComponentMeta<typeof FilesPageHeader>;
 
-const Template: ComponentStory<typeof FilesPageHeader> = (args) => <FilesPageHeader {...args} />;
+const Template: ComponentStory<typeof FilesPageHeader> = (args) => <FilesPageHeader />;
 
 export const Normal = Template.bind({});
 Normal.args = {
