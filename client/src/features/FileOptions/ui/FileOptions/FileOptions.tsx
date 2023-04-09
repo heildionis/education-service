@@ -7,7 +7,6 @@ import { Icon } from 'shared/ui/Icon/Icon';
 import { GarbageIcon, MenuIcon } from 'shared/assets/icons';
 import { Button } from 'shared/ui/Button/Button';
 import { Typography } from 'shared/ui/Typography/Typography';
-import { FileEntity } from 'entities/File';
 import cls from './FileOptions.module.scss';
 
 interface FileOptionsProps {
@@ -33,7 +32,7 @@ export const FileOptions: FC<FileOptionsProps> = memo((props: FileOptionsProps) 
                 <Menu.Button className={cls.btn}><Icon Svg={MenuIcon} /></Menu.Button>
                 <Menu.Items className={cls.items}>
                     <Card className={cls.card}>
-                        <Typography color='inverted'>Menu</Typography>
+                        <Typography color='inverted'>{t('Меню')}</Typography>
                         <Menu.Item>
                             <Button
                                 className={cls.deleteBtn}
@@ -41,11 +40,11 @@ export const FileOptions: FC<FileOptionsProps> = memo((props: FileOptionsProps) 
                                 fullWidth
                                 onClick={onDeleteClick}
                             >
-                                Delete
+                                {t('Удалить')}
                                 <Icon Svg={GarbageIcon} variant='secondary' />
                             </Button>
                         </Menu.Item>
-                        {isDir && (
+                        {!isDir && (
                             <Menu.Item>
                                 <Button
                                     className={cls.deleteBtn}
@@ -53,7 +52,7 @@ export const FileOptions: FC<FileOptionsProps> = memo((props: FileOptionsProps) 
                                     fullWidth
                                     onClick={onDownloadClick}
                                 >
-                                    Установить
+                                    {t('Скачать')}
                                     <Icon Svg={GarbageIcon} variant='secondary' />
                                 </Button>
                             </Menu.Item>

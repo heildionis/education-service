@@ -1,10 +1,13 @@
-.FileUpload {}
-
 .input {
     display: none;
 }
 
 .label {
     width: 100%;
+    display: block;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 100%;
 }

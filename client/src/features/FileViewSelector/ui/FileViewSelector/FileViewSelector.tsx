@@ -10,7 +10,7 @@ import { fileViewActions, fileViewReducer } from 'features/FileViewSelector/mode
 import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useSelector } from 'react-redux';
 import { getFileView } from 'features/FileViewSelector/model/selectors/getFileView';
-import cls from './FileViewSelector.module.scss';
+import { Row } from 'shared/ui/Stack';
 
 interface FileViewSelectorProps {
     className?: string;
@@ -51,7 +51,7 @@ export const FileViewSelector: FC<FileViewSelectorProps> = memo((props: FileView
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <div className={classNames(cls.FileViewSelector, {}, [className])}>
+            <Row className={classNames('', {}, [className])}>
                 {fileViews.map((fileView) => (
                     <Button
                         key={fileView.view}
@@ -65,7 +65,7 @@ export const FileViewSelector: FC<FileViewSelectorProps> = memo((props: FileView
                         />
                     </Button>
                 ))}
-            </div>
+            </Row>
         </DynamicModuleLoader>
     );
 });

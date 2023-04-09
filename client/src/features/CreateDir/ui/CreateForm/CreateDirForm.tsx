@@ -8,16 +8,13 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button } from 'shared/ui/Button/Button';
 import { Card } from 'shared/ui/Card';
-import cls from './CreateDir.module.scss';
-import {
-    getCreateDirName,
-    getCreateDirParentId, getCreateDirType,
-} from '../../model/selectors/getCreateDirSelectors';
+import { getCreateDirName } from '../../model/selectors/getCreateDirSelectors';
 import { createDir } from '../../model/services/createDir';
+import cls from './CreateDir.module.scss';
 
 interface CreateDirFormProps {
     className?: string;
-    onCreateDir?: (name: string) => () => void;
+    parentId?: number | null;
 }
 
 const reducers: ReducerList = {
@@ -25,7 +22,7 @@ const reducers: ReducerList = {
 };
 
 export const CreateDirForm: FC<CreateDirFormProps> = memo((props: CreateDirFormProps) => {
-    const { className, onCreateDir } = props;
+    const { className, parentId } = props;
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
     const name = useSelector(getCreateDirName);
@@ -35,7 +32,11 @@ export const CreateDirForm: FC<CreateDirFormProps> = memo((props: CreateDirFormP
     }, [dispatch]);
 
     const onClick = () => {
-        onCreateDir?.(name)();
+        const isNotRootDir = parentId !== null && parentId;
+        dispatch(createDir({
+            name,
+            parentId: isNotRootDir ? parentId : undefined,
+        }));
         dispatch(createDirActions.setName(''));
     };
 
@@ -43,7 +44,7 @@ export const CreateDirForm: FC<CreateDirFormProps> = memo((props: CreateDirFormP
         <DynamicModuleLoader reducers={reducers}>
             <Card className={classNames(cls.CreateDir, {}, [className])}>
                 <Input value={name} onChange={onChangeName} fullWidth />
-                <Button onClick={onClick}>Создать папку</Button>
+                <Button onClick={onClick}>{t('Создать папку')}</Button>
             </Card>
         </DynamicModuleLoader>
     );

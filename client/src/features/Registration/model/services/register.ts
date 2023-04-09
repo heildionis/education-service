@@ -20,6 +20,7 @@ export const register = createAsyncThunk<UserResponse, RegistrationProps, ThunkC
             const { user, accessToken } = response.data;
 
             dispatch(userActions.setAuthData(user));
+            dispatch(userActions.setInited(true));
             localStorage.setItem(LOCAL_STORAGE_ACCESS_TOKEN, accessToken);
 
             return response.data;
