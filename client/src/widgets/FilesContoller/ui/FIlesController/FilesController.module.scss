@@ -1,0 +1,14 @@
+.FileController {
+    width: var(--sidebar-width);
+    padding: 8px;
+    border: 1px solid var(--primary-color);
+    background: var(--inverted-bg-color);
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.icon {
+    width: var(--sidebar-width);
+    height: 230px;
+}
