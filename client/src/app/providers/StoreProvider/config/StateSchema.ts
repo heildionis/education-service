@@ -14,6 +14,7 @@ import { FileViewSchema } from 'features/FileViewSelector';
 import { RegistrationSchema } from 'features/Registration';
 import { ScrollControllerSchema } from 'features/ScrollController';
 import { FilesPageSchema } from 'pages/FilesPage';
+import { FilesTableSchema } from 'widgets/FilesTable';
 
 export interface StateSchema {
     user: UserSchema;
@@ -26,6 +27,7 @@ export interface StateSchema {
     filesPage?: FilesPageSchema;
     createDir?: CreateDirSchema;
     fileUpload?: FileUploadSchema;
+    filesTable?: FilesTableSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
