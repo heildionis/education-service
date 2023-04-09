@@ -17,6 +17,7 @@ import { TelegramIcon } from 'shared/assets/icons';
 import { Link } from 'react-router-dom';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from 'shared/config/routes/routes';
+import { Row } from 'shared/ui/Stack';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -54,48 +55,51 @@ export const Navbar: FC<NavbarProps> = memo((props) => {
 
     if (isAuth) {
         return (
-            <div className={classNames(cls.Navbar, {}, [className])}>
+            <Row className={classNames(cls.Navbar, {}, [className])}>
                 <Container className={cls.container}>
-                    <AppLink to={RoutePath.files}>{t('Файлы')}</AppLink>
-                    <Button className={cls.authBtn} onClick={onClickLogout}>Выйти</Button>
+                    <div className={cls.logo} />
+                    <Row justify='between'>
+                        <AppLink to={RoutePath.files}>{t('Файлы')}</AppLink>
+                        <Button className={cls.authBtn} onClick={onClickLogout}>{t('Выйти')}</Button>
+                    </Row>
                 </Container>
-            </div>
+            </Row>
         );
     }
 
     return (
-        <div className={classNames(cls.Navbar, {}, [className])}>
-            <Container className={cls.container}>
-                <div>
+        <Row className={classNames(cls.Navbar, {}, [className])}>
+            <Container>
+                <Row justify='between'>
                     <Link to='https://t.me/heildionis' target='_blank'>
                         <TelegramIcon fill='white' />
                     </Link>
-                </div>
-                <div className={cls.rightSide}>
-                    <Button
-                        isAnimated={false}
-                        className={cls.authBtn}
-                        onClick={onOpenRegistrationModal}
-                    >
-                        {t('Зарегистрироваться')}
-                    </Button>
-                    <Button
-                        isAnimated={false}
-                        className={cls.authBtn}
-                        onClick={onOpenLoginModal}
-                    >
-                        {t('Войти')}
-                    </Button>
-                    <RegistrationModal
-                        isOpen={isRegistrationModal}
-                        onClose={onCloseRegistrationModal}
-                    />
-                    <LoginModal
-                        isOpen={isLoginModal}
-                        onClose={onCloseLoginModal}
-                    />
-                </div>
+                    <Row gap='16' className={cls.rightSide}>
+                        <Button
+                            isAnimated={false}
+                            className={cls.authBtn}
+                            onClick={onOpenRegistrationModal}
+                        >
+                            {t('Зарегистрироваться')}
+                        </Button>
+                        <Button
+                            isAnimated={false}
+                            className={cls.authBtn}
+                            onClick={onOpenLoginModal}
+                        >
+                            {t('Войти')}
+                        </Button>
+                        <RegistrationModal
+                            isOpen={isRegistrationModal}
+                            onClose={onCloseRegistrationModal}
+                        />
+                        <LoginModal
+                            isOpen={isLoginModal}
+                            onClose={onCloseLoginModal}
+                        />
+                    </Row>
+                </Row>
             </Container>
-        </div>
+        </Row>
     );
 });
