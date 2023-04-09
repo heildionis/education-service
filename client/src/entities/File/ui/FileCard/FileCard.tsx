@@ -9,19 +9,15 @@ import { Card } from 'shared/ui/Card';
 import { Icon } from 'shared/ui/Icon/Icon';
 import { Typography } from 'shared/ui/Typography/Typography';
 import { RippleWrapper } from 'shared/animations/components/RippleEffect';
-import { FileOptions } from 'features/FileOptions';
 import { FileEntity, FileView } from '../../model/types/file';
 import cls from './FileCard.module.scss';
 
 interface FileCardProps extends HTMLAttributes<HTMLDivElement> {
     className?: string;
-    id?: string;
     file: FileEntity;
     view?: FileView;
     onOpenDir?: (file: FileEntity) => () => void;
-    onDeleteFile?: (file: FileEntity) => () => void;
-    onDownloadFile?: (file: FileEntity) => () => void;
-    renderOptions?: ReactNode;
+    renderOptions?: () => ReactNode;
 }
 
 const convertDate = (dateString: Date) => {
@@ -35,13 +31,10 @@ const convertDate = (dateString: Date) => {
 export const FileCard: FC<FileCardProps> = (props: FileCardProps) => {
     const {
         className,
-        id,
         file,
         view = 'tile',
         renderOptions,
         onOpenDir,
-        onDeleteFile,
-        onDownloadFile,
         ...otherProps
     } = props;
 
@@ -62,11 +55,7 @@ export const FileCard: FC<FileCardProps> = (props: FileCardProps) => {
                     {file.type !== 'dir' ? `${file.size}B` : ''}
                 </Typography>
                 <Typography align='center' className={cls.date}>{`${convertDate(file.createdAt)}`}</Typography>
-                <FileOptions
-                    isDir={file.type === 'dir'}
-                    onDeleteClick={onDeleteFile?.(file)}
-                    onDownloadClick={onDownloadFile?.(file)}
-                />
+                {renderOptions?.()}
             </Card>
         );
     }

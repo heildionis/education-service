@@ -13,9 +13,7 @@ interface FileListProps {
     isLoading?: boolean;
     view?: FileView;
     onOpenDir?: (file: FileEntity) => () => void;
-    onDeleteFile?: (file: FileEntity) => () => void;
-    onDownloadFile?: (file: FileEntity) => () => void;
-    renderOptions?: ReactNode;
+    renderOptions?: (file: FileEntity) => () => ReactNode;
 }
 
 const generateSkeleton = (view: FileView) => (
@@ -34,8 +32,6 @@ export const FileList: FC<FileListProps> = memo((props: FileListProps) => {
         isLoading,
         view = 'tile',
         onOpenDir,
-        onDeleteFile,
-        onDownloadFile,
         renderOptions,
     } = props;
     const { t } = useTranslation();
@@ -43,14 +39,11 @@ export const FileList: FC<FileListProps> = memo((props: FileListProps) => {
     const renderFile = (file: FileEntity) => (
         <FileCard
             onOpenDir={onOpenDir}
-            onDeleteFile={onDeleteFile}
-            onDownloadFile={onDownloadFile}
             key={file.id}
             file={file}
             view={view}
-            renderOptions={renderOptions}
+            renderOptions={renderOptions?.(file)}
         />
-
     );
 
     return (

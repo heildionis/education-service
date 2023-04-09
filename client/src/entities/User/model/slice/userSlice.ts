@@ -16,6 +16,9 @@ export const userSlice = createSlice({
         setAuthData: (state, action: PayloadAction<User>) => {
             state.authData = action.payload;
         },
+        setInited: (state, action: PayloadAction<boolean>) => {
+            state._inited = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder

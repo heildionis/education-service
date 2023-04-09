@@ -50,6 +50,7 @@ module.exports = {
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'error',
         'react/jsx-no-useless-fragment': 'off',
+        'react/no-unstable-nested-components': 'off',
         'jsx-quotes': ['error', 'prefer-single'],
         'react/no-array-index-key': 'off',
         'array-callback-return': 'off',
