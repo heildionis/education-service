@@ -1,11 +1,10 @@
-import { checkAuth, getUserInited } from 'entities/User';
+import { checkAuth, getUserAuthData, getUserInited } from 'entities/User';
 import { Suspense, useEffect } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Container } from 'shared/lib/components/Container/Container';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Navbar } from 'widgets/Navbar';
 import { useSelector } from 'react-redux';
-import { Sidebar } from 'widgets/Sidebar';
 import { AppRouter } from './providers/RouteProvider/ui/AppRouter';
 
 export const App = () => {
@@ -22,12 +21,9 @@ export const App = () => {
                 <Navbar />
                 <div className='content-page'>
                     {inited && (
-                        <>
-                            <Container className='container'>
-                                {inited && <Sidebar className='sidebar' />}
-                                <AppRouter />
-                            </Container>
-                        </>
+                        <Container>
+                            <AppRouter />
+                        </Container>
                     )}
                 </div>
             </Suspense>
