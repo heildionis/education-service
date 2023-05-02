@@ -4,12 +4,4 @@ module.exports = {
         '@babel/preset-typescript',
         ['@babel/preset-react', { runtime: 'automatic' }],
     ],
-    // plugins: [
-    //     ['i18next-extract', {
-    //         locales: ['en', 'ru'],
-    //         defaultNS: 'translation',
-    //         outputPath: 'public/locales/{{locale}}/{{ns}}.json',
-    //         keyAsDefaultValue: true,
-    //     }],
-    // ],
 };
