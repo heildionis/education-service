@@ -19,7 +19,6 @@ export const buildWebpackConfig = (options: BuildOptions): webpack.Configuration
         output: {
             filename: '[name].[contenthash].js',
             path: paths.build,
-            clean: true,
             publicPath: '/',
         },
         plugins: buildPlugins(options),
@@ -27,7 +26,7 @@ export const buildWebpackConfig = (options: BuildOptions): webpack.Configuration
         module: {
             rules: buildLoaders(options),
         },
-        devtool: isDev ? 'inline-source-map' : undefined,
+        devtool: isDev ? 'eval-cheap-module-source-map' : undefined,
         devServer: isDev ? buildDevServer(options) : undefined,
     };
 };
