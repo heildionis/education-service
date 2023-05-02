@@ -1,6 +1,7 @@
-import { LOCAL_STORAGE_ACCESS_TOKEN } from 'shared/constants/localStorage';
-import { ThunkConfig } from 'app/providers/StoreProvider';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
+import { ThunkConfig } from '@/app/providers/StoreProvider';
+import { LOCAL_STORAGE_ACCESS_TOKEN } from '@/shared/constants/localStorage';
 
 export const logout = createAsyncThunk<any, void, ThunkConfig<string>>(
     'user/logout',

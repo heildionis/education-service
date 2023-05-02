@@ -1,7 +1,9 @@
-import { LOCAL_STORAGE_ACCESS_TOKEN } from 'shared/constants/localStorage';
-import { ThunkConfig } from 'app/providers/StoreProvider';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import { UserResponse } from '../types/user';
+
+import { ThunkConfig } from '@/app/providers/StoreProvider';
+import { LOCAL_STORAGE_ACCESS_TOKEN } from '@/shared/constants/localStorage';
 
 export const checkAuth = createAsyncThunk<UserResponse, void, ThunkConfig<string>>(
     'user/checkAuth',
