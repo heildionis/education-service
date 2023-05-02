@@ -1,4 +1,5 @@
 import { Story } from '@storybook/react';
-import 'app/styles/index.scss';
+// eslint-disable-next-line heildionis-plugin/layer-imports
+import '@/app/styles/index.scss';
 
 export const StyleDecorator = (story: () => Story) => story();

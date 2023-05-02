@@ -1,6 +1,7 @@
 import { Story } from '@storybook/react';
-import { ThemeProvider } from 'app/providers/ThemeProvider';
-import { Theme } from 'shared/lib/themes';
+
+import { ThemeProvider } from '@/app/providers/ThemeProvider/testing';
+import { Theme } from '@/shared/lib/themes';
 
 export const ThemeDecorator = (theme: Theme) => (StoryComponent: Story) => (
     <ThemeProvider initialTheme={theme}>

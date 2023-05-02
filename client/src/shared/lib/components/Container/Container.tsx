@@ -1,5 +1,7 @@
 import { FC, HTMLAttributes, ReactNode } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+
+import { classNames } from '../../classNames/classNames';
+
 import cls from './Container.module.scss';
 
 interface ContainerProps extends HTMLAttributes<HTMLDivElement> {

@@ -4,9 +4,11 @@ import React, {
     FC,
     useCallback,
 } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { generateRandomNumber } from 'shared/lib/generateRandomNumber/generateRandomNumber';
+
 import cls from './RippleEffect.module.scss';
+
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { generateRandomNumber } from '@/shared/lib/generateRandomNumber/generateRandomNumber';
 
 interface RippleEffectProps {
     className?: string;

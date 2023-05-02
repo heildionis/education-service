@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+
 import { TelegramUser, WebApp } from './types/telegram';
 
 export interface ITelegramContext {
