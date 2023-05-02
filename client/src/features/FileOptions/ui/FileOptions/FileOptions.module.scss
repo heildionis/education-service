@@ -15,7 +15,11 @@
     z-index: 10;
 }
 
-.cardWrapper {}
+.icon {
+    &:hover {
+        fill: var(--primary-color-hover);
+    }
+}
 
 .card {
     width: 175px;

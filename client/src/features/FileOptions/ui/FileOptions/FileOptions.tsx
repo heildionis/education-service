@@ -1,13 +1,15 @@
+import { Menu } from '@headlessui/react';
 import { FC, memo, MouseEvent } from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Menu } from '@headlessui/react';
-import { Card } from 'shared/ui/Card';
-import { Icon } from 'shared/ui/Icon/Icon';
-import { GarbageIcon, MenuIcon } from 'shared/assets/icons';
-import { Button } from 'shared/ui/Button/Button';
-import { Typography } from 'shared/ui/Typography/Typography';
+
 import cls from './FileOptions.module.scss';
+
+import { GarbageIcon, MenuIcon } from '@/shared/assets/icons';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Button } from '@/shared/ui/Button/Button';
+import { Card } from '@/shared/ui/Card';
+import { Icon } from '@/shared/ui/Icon/Icon';
+import { Typography } from '@/shared/ui/Typography/Typography';
 
 interface FileOptionsProps {
     className?: string;
@@ -29,7 +31,7 @@ export const FileOptions: FC<FileOptionsProps> = memo((props: FileOptionsProps) 
     return (
         <div className={classNames(cls.FileOptions, {}, [className])} onClick={onOpenClick}>
             <Menu>
-                <Menu.Button className={cls.btn}><Icon Svg={MenuIcon} /></Menu.Button>
+                <Menu.Button className={cls.btn}><Icon className={cls.icon} Svg={MenuIcon} /></Menu.Button>
                 <Menu.Items className={cls.items}>
                     <Card className={cls.card}>
                         <Typography color='inverted'>{t('Меню')}</Typography>

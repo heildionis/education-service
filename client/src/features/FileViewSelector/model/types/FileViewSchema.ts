@@ -1,4 +1,4 @@
-import { FileView } from 'entities/File';
+import { FileView } from '@/entities/File';
 
 export interface FileViewSchema {
     view: FileView;

@@ -1,16 +1,18 @@
 import { FC, memo, useCallback } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { ListIcon, TileIcon } from 'shared/assets/icons';
-import { Icon } from 'shared/ui/Icon/Icon';
-import { FileView } from 'entities/File';
-import { Button } from 'shared/ui/Button/Button';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { fileViewActions, fileViewReducer } from 'features/FileViewSelector/model/slice/fileViewSlice';
-import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useSelector } from 'react-redux';
-import { getFileView } from 'features/FileViewSelector/model/selectors/getFileView';
-import { Row } from 'shared/ui/Stack';
+
+import { getFileView } from '../../model/selectors/getFileView';
+import { fileViewActions, fileViewReducer } from '../../model/slice/fileViewSlice';
+
+import { FileView } from '@/entities/File';
+import { ListIcon, TileIcon } from '@/shared/assets/icons';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { DynamicModuleLoader, ReducerList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { Button } from '@/shared/ui/Button/Button';
+import { Icon } from '@/shared/ui/Icon/Icon';
+import { Row } from '@/shared/ui/Stack';
 
 interface FileViewSelectorProps {
     className?: string;

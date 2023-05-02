@@ -1,7 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { FileView } from 'entities/File';
-import { LOCAL_STORAGE_FILE_VIEW } from 'shared/constants/localStorage';
+
 import { FileViewSchema } from '../types/FileViewSchema';
+
+import { FileView } from '@/entities/File';
+import { LOCAL_STORAGE_FILE_VIEW } from '@/shared/constants/localStorage';
 
 const initialState: FileViewSchema = {
     view: 'tile',
