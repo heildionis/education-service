@@ -1,8 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+
 import { PageError } from './PageError';
 
 export default {
-    title: 'shared/PageError',
+    title: 'widgets/PageError',
     component: PageError,
 } as ComponentMeta<typeof PageError>;
 

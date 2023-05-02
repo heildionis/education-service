@@ -6,16 +6,18 @@ import {
     useRef,
     UIEvent,
 } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { useInfiniteScroll } from 'shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { useThrottle } from 'shared/lib/hooks/useThrottle/useThrottle';
 import { useSelector } from 'react-redux';
-import { getScrollControllerScrollByPath, scrollControllerActions } from 'features/ScrollController';
-import { StateSchema } from 'app/providers/StoreProvider';
 import { useLocation } from 'react-router-dom';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+
 import cls from './Page.module.scss';
+
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { getScrollControllerScrollByPath, scrollControllerActions } from '@/features/ScrollController';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
+import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
 
 interface PageProps {
     className?: string;
