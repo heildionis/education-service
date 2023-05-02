@@ -19,7 +19,7 @@ module.exports = {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
-    plugins: ['react', '@typescript-eslint', 'react-hooks', 'i18next', 'heildionis-plugin'],
+    plugins: ['react', '@typescript-eslint', 'react-hooks', 'i18next', 'heildionis-plugin', 'unused-imports'],
     globals: {
         __IS_DEV__: true,
         __API__: true,
@@ -40,7 +40,7 @@ module.exports = {
         '@typescript-eslint/ban-ts-comment': 'off',
         '@typescript-eslint/no-var-requires': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
-        'no-unused-vars': 'warn',
+        'no-unused-vars': 'off',
         'no-underscore-dangle': 'off',
         'react/jsx-indent': [2, 4],
         'react/jsx-indent-props': [2, 4],
@@ -74,7 +74,7 @@ module.exports = {
             'error',
             {
                 alias: '@',
-                testFilesPatterns: ['**/*.test.*', '**/*.stories.*', '**/StoreDecorator.tsx'],
+                testFilesPatterns: ['**/*.test.*', '**/*.stories.*', '**/StoreDecorator.tsx', '**/StyleDecorator.ts'],
             },
         ],
         'heildionis-plugin/layer-imports': [
@@ -82,6 +82,30 @@ module.exports = {
             {
                 alias: '@',
                 ignoreImportPatterns: ['**/StoreProvider', '**/testing'],
+            },
+        ],
+        'unused-imports/no-unused-imports': 'error',
+        'unused-imports/no-unused-vars': [
+            'warn',
+            {
+                vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_',
+            },
+        ],
+        'import/order': [
+            'error',
+            {
+                pathGroups: [
+                    {
+                        pattern: '@/**',
+                        group: 'internal',
+                        position: 'after',
+                    },
+                ],
+                'newlines-between': 'always',
+                alphabetize: {
+                    order: 'asc',
+                    caseInsensitive: false,
+                },
             },
         ],
     },
