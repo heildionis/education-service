@@ -1,11 +1,13 @@
-import { checkAuth, getUserAuthData, getUserInited } from 'entities/User';
 import { Suspense, useEffect } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Container } from 'shared/lib/components/Container/Container';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Navbar } from 'widgets/Navbar';
 import { useSelector } from 'react-redux';
+
 import { AppRouter } from './providers/RouteProvider/ui/AppRouter';
+
+import { checkAuth, getUserInited } from '@/entities/User';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Container } from '@/shared/lib/components/Container/Container';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Navbar } from '@/widgets/Navbar';
 
 export const App = () => {
     const dispatch = useAppDispatch();
