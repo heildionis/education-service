@@ -1,9 +1,9 @@
 import webpack from 'webpack';
 
-import { BuildOptions } from './types/config';
-import { buildSvgLoader } from './loaders/buildSvgLoader';
-import { buildCssLoader } from './loaders/buildCssLoader';
 import { buildBabelLoader } from './loaders/babelBabelLoader';
+import { buildCssLoader } from './loaders/buildCssLoader';
+import { buildSvgLoader } from './loaders/buildSvgLoader';
+import { BuildOptions } from './types/config';
 
 export const buildLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
     const { isDev } = options;

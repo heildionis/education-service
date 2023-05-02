@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { FileUploadSchema } from '../types/FileUploadSchema';
 
 const initialState: FileUploadSchema = {

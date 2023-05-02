@@ -4,13 +4,16 @@ import {
     memo,
 } from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Button } from 'shared/ui/Button/Button';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { uploadFile } from 'pages/FilesPage/model/services/uploadFile';
-import { fileUploadReducer } from 'features/FileUpload/model/slice/fileUploadSlice';
-import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+
+import { uploadFile } from '../../model/services/uploadFile';
+import { fileUploadReducer } from '../../model/slice/fileUploadSlice';
+
 import cls from './FileUpload.module.scss';
+
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { DynamicModuleLoader, ReducerList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Button } from '@/shared/ui/Button/Button';
 
 interface FileUploadProps {
     className?: string;
