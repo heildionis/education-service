@@ -19,7 +19,7 @@ module.exports = {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
-    plugins: ['react', '@typescript-eslint', 'react-hooks', 'i18next'],
+    plugins: ['react', '@typescript-eslint', 'react-hooks', 'i18next', 'heildionis-plugin'],
     globals: {
         __IS_DEV__: true,
         __API__: true,
@@ -39,6 +39,7 @@ module.exports = {
         'import/no-extraneous-dependencies': 'off',
         '@typescript-eslint/ban-ts-comment': 'off',
         '@typescript-eslint/no-var-requires': 'off',
+        '@typescript-eslint/no-non-null-assertion': 'off',
         'no-unused-vars': 'warn',
         'no-underscore-dangle': 'off',
         'react/jsx-indent': [2, 4],
@@ -68,6 +69,21 @@ module.exports = {
         'jsx-a11y/no-static-element-interactions': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',
         'jsx-a11y/label-has-associated-control': 'off',
+        'heildionis-plugin/path-checker': [2, { alias: '@' }],
+        'heildionis-plugin/public-api-imports': [
+            'error',
+            {
+                alias: '@',
+                testFilesPatterns: ['**/*.test.*', '**/*.stories.*', '**/StoreDecorator.tsx'],
+            },
+        ],
+        'heildionis-plugin/layer-imports': [
+            'error',
+            {
+                alias: '@',
+                ignoreImportPatterns: ['**/StoreProvider', '**/testing'],
+            },
+        ],
     },
     overrides: [
         {
