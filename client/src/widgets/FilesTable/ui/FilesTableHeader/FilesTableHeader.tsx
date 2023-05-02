@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { FileViewSelector } from '@/features/FileViewSelector';
-import { RoutePath } from '@/shared/config/routes/routes';
+import { getRouteFile } from '@/shared/config/routes/routes';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { Button } from '@/shared/ui/Button/Button';
 import { Row } from '@/shared/ui/Stack';
@@ -32,7 +32,7 @@ export const FilesTableHeader = memo((props: FilesTableHeaderProps) => {
                 {currentDir !== null
                 && (
                     <AppLink
-                        to={RoutePath.files + parentId}
+                        to={getRouteFile(String(parentId))}
                         onClick={onBackClick?.(parentId)}
                     >
                         <Button>

@@ -10,7 +10,7 @@ import cls from './FileCard.module.scss';
 
 import { RippleWrapper } from '@/shared/animations/components/RippleEffect';
 import { FileIcon, FolderIcon } from '@/shared/assets/icons';
-import { RoutePath } from '@/shared/config/routes/routes';
+import { getRouteFile } from '@/shared/config/routes/routes';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { convertDate } from '@/shared/lib/converters';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
@@ -47,7 +47,7 @@ export const FileCard: FC<FileCardProps> = (props: FileCardProps) => {
                     <Icon className={cls.icon} Svg={file.type === 'dir' ? FolderIcon : FileIcon} />
                 </RippleWrapper>
                 <AppLink
-                    to={`${RoutePath.files}${file.id}`}
+                    to={getRouteFile(String(file.id))}
                     className={cls.label}
                 >
                     <Typography variant='h5' color='secondary'>
@@ -64,7 +64,7 @@ export const FileCard: FC<FileCardProps> = (props: FileCardProps) => {
     }
 
     return (
-        <AppLink to={`${RoutePath.files}${file.id}`}>
+        <AppLink to={getRouteFile(String(file.id))}>
             <Card
                 className={classNames(cls.FileCard, {}, [className, cls[view]])}
                 onClick={onOpenDir?.(file)}

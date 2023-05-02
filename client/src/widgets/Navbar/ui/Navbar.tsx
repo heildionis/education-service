@@ -14,7 +14,7 @@ import { getUserAuthData, logout } from '@/entities/User';
 import { LoginModal } from '@/features/AuthBy';
 import { RegistrationModal } from '@/features/Registration';
 import { TelegramIcon } from '@/shared/assets/icons';
-import { RoutePath } from '@/shared/config/routes/routes';
+import { getRouteFile } from '@/shared/config/routes/routes';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Container } from '@/shared/lib/components/Container/Container';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -60,7 +60,7 @@ export const Navbar: FC<NavbarProps> = memo((props) => {
                 <Container className={cls.container}>
                     <div className={cls.logo} />
                     <Row justify='between'>
-                        <AppLink to={`${RoutePath.files}null`}>{t('Файлы')}</AppLink>
+                        <AppLink to={getRouteFile('null')}>{t('Файлы')}</AppLink>
                         <Button className={cls.authBtn} onClick={onClickLogout}>{t('Выйти')}</Button>
                     </Row>
                 </Container>

@@ -6,10 +6,7 @@ export enum AppRoutes {
     NOT_FOUND = 'notFound'
 }
 
-export const RoutePath: Record<AppRoutes, string> = {
-    [AppRoutes.HOME]: '/',
-    [AppRoutes.ABOUT]: '/about',
-    [AppRoutes.PROFILE]: '/profile',
-    [AppRoutes.FILES]: '/files/',
-    [AppRoutes.NOT_FOUND]: '*',
-};
+export const getRouteHome = () => '/';
+export const getRouteAbout = () => '/about';
+export const getRouteProfile = (id: string) => `/profile/${id}`;
+export const getRouteFile = (id: string) => `/files/${id}`;

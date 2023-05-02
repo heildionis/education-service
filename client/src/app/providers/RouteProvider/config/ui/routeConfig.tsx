@@ -5,7 +5,9 @@ import { FilesPage } from '@/pages/FilesPage';
 import { HomePage } from '@/pages/HomePage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { ProfilePage } from '@/pages/ProfilePage';
-import { AppRoutes, RoutePath } from '@/shared/config/routes/routes';
+import {
+    AppRoutes, getRouteAbout, getRouteFile, getRouteHome, getRouteProfile,
+} from '@/shared/config/routes/routes';
 
 export type AppRouteProps = RouteProps & {
     authOnly?: boolean;
@@ -13,25 +15,25 @@ export type AppRouteProps = RouteProps & {
 
 export const routeConfig: Record<AppRoutes, AppRouteProps> = {
     [AppRoutes.HOME]: {
-        path: RoutePath.home,
+        path: getRouteHome(),
         element: <HomePage />,
     },
     [AppRoutes.ABOUT]: {
-        path: RoutePath.about,
+        path: getRouteAbout(),
         element: <AboutPage />,
     },
     [AppRoutes.PROFILE]: {
-        path: RoutePath.profile,
+        path: getRouteProfile(':id'),
         element: <ProfilePage />,
         authOnly: true,
     },
     [AppRoutes.FILES]: {
-        path: `${RoutePath.files}:id`,
+        path: getRouteFile(':id'),
         element: <FilesPage />,
         authOnly: true,
     },
     [AppRoutes.NOT_FOUND]: {
-        path: RoutePath.notFound,
+        path: '*',
         element: <NotFoundPage />,
     },
 };

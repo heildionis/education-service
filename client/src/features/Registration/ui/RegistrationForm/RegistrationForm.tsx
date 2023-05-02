@@ -16,7 +16,6 @@ import { registrationActions, registrationReducer } from '../../model/slice/regi
 import cls from './RegistrationForm.module.scss';
 
 import { AuhtPersonIcon } from '@/shared/assets/icons';
-import { RoutePath } from '@/shared/config/routes/routes';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { DynamicModuleLoader, ReducerList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -62,7 +61,6 @@ const RegistrationForm: FC<RegistrationFormProps> = memo((props) => {
         const result = await dispatch(register({ username, email, password }));
         if (result.meta.requestStatus === 'fulfilled') {
             onSuccess();
-            navigate(RoutePath.files, { replace: true });
         }
     };
 
