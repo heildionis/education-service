@@ -1,8 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+
 import { FilesController } from './FilesController';
 
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
+
 export default {
-    title: 'shared/Sidebar',
+    title: 'widgets/FileController',
     component: FilesController,
 } as ComponentMeta<typeof FilesController>;
 
@@ -12,3 +15,4 @@ export const Normal = Template.bind({});
 Normal.args = {
 
 };
+Normal.decorators = [StoreDecorator({})];
