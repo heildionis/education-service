@@ -1,7 +1,9 @@
 import { FC, Suspense } from 'react';
-import { Loader } from 'shared/ui/Loader/Loader';
-import { Modal } from 'shared/ui/Modal/Modal';
+
 import { RegistrationFormAsync } from '../RegistrationForm/RegistrationForm.async';
+
+import { Loader } from '@/shared/ui/Loader/Loader';
+import { Modal } from '@/shared/ui/Modal/Modal';
 
 interface RegistrationModalProps {
     className?: string;

@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { register } from '../services/register';
 import { RegistrationSchema } from '../types/registration';
 

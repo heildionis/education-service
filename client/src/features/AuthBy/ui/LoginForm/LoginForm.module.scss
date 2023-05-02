@@ -1,10 +1,9 @@
-.wrapper {
-    display: grid;
-    gap: 15px;
-}
-
 .btn {
     margin-left: auto;
+}
+
+.privacy {
+    max-width: 250px;
 }
 
 .card {
@@ -18,8 +17,4 @@
 
 .form {
     padding: 16px;
-}
-
-.privacy {
-    max-width: 250px;
 }

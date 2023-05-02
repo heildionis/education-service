@@ -1,8 +1,9 @@
-import { ThunkConfig } from 'app/providers/StoreProvider';
-import { userActions, UserResponse } from 'entities/User';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { isAxiosError } from 'axios';
-import { LOCAL_STORAGE_ACCESS_TOKEN } from 'shared/constants/localStorage';
+
+import { ThunkConfig } from '@/app/providers/StoreProvider';
+import { userActions, UserResponse } from '@/entities/User';
+import { LOCAL_STORAGE_ACCESS_TOKEN } from '@/shared/constants/localStorage';
 
 interface LoginProps {
     username: string;

@@ -1,18 +1,18 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { LoginModal } from './LoginModal';
+import LoginForm from './LoginForm';
 
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
 
 export default {
-    title: 'features/AuthByUsername/LoginModal',
-    component: LoginModal,
-} as ComponentMeta<typeof LoginModal>;
+    title: 'features/AuthByUsername/LoginForm',
+    component: LoginForm,
+} as ComponentMeta<typeof LoginForm>;
 
-const Template: ComponentStory<typeof LoginModal> = (args) => <LoginModal {...args} />;
+const Template: ComponentStory<typeof LoginForm> = (args) => <LoginForm {...args} />;
 
 export const Normal = Template.bind({});
 Normal.args = {
-    isOpen: true,
+
 };
 Normal.decorators = [StoreDecorator({ })];

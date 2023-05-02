@@ -1,8 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { userActions, UserResponse } from 'entities/User';
-import { ThunkConfig } from 'app/providers/StoreProvider';
-import { LOCAL_STORAGE_ACCESS_TOKEN } from 'shared/constants/localStorage';
 import { isAxiosError } from 'axios';
+
+import { ThunkConfig } from '@/app/providers/StoreProvider';
+import { userActions, UserResponse } from '@/entities/User';
+import { LOCAL_STORAGE_ACCESS_TOKEN } from '@/shared/constants/localStorage';
 
 interface RegistrationProps {
     username: string;
