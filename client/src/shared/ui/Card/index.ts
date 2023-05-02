@@ -1,2 +1,1 @@
-export { CardAction } from './CardAction/CardAction';
-export { Card } from './Card';
+export { Card } from './ui/Card';

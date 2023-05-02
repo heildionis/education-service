@@ -4,9 +4,11 @@ import {
     FC,
     memo,
 } from 'react';
-import { RippleEffect } from 'shared/animations/components/RippleEffect';
-import { classNames, Mods } from 'shared/lib/classNames/classNames';
+
 import cls from './Button.module.scss';
+
+import { RippleEffect } from '@/shared/animations/components/RippleEffect';
+import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'outlined' | 'clear'
 export type ButtonSize = 'small' | 'medium' | 'large'

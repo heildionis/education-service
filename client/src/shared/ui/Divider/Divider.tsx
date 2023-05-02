@@ -1,16 +1,20 @@
 import { FC, memo } from 'react';
-import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames/classNames';
+
 import cls from './Divider.module.scss';
+
+import { classNames } from '@/shared/lib/classNames/classNames';
+
+type DividerVariant = 'small' | 'medium' | 'large';
 
 interface DividerProps {
     className?: string;
+    variant?: DividerVariant;
 }
 
 export const Divider: FC<DividerProps> = memo((props: DividerProps) => {
-    const { className } = props;
+    const { className, variant = 'small' } = props;
 
     return (
-        <hr className={classNames(cls.Divider, {}, [className])} />
+        <hr className={classNames(cls.Divider, {}, [className, cls[variant]])} />
     );
 });

@@ -5,8 +5,10 @@ import {
     HTMLAttributes,
     CSSProperties,
 } from 'react';
-import { Additional, classNames } from 'shared/lib/classNames/classNames';
+
 import cls from './Skeleton.module.scss';
+
+import { Additional, classNames } from '@/shared/lib/classNames/classNames';
 
 type SkeletonType = 'circular' | 'rounded' | 'text' | 'rectangular';
 type SkeletonAnimation = 'pulse' | 'wave' | 'disabled';

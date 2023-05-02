@@ -1,8 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
-import { Theme } from 'shared/lib/themes';
+
 import { Typography } from '../Typography/Typography';
+
 import { Modal } from './Modal';
+
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
+import { Theme } from '@/shared/lib/themes';
 
 export default {
     title: 'shared/Modal',
@@ -11,7 +14,7 @@ export default {
         children: (
             <div>
                 <div><Typography variant='h1'>Modal content here..</Typography></div>
-                <div><Typography variant='h4' align='center'>You can use everythin you want</Typography></div>
+                <div><Typography variant='h4' align='center'>You can use everything you want</Typography></div>
             </div>
         ),
     },

@@ -8,16 +8,19 @@ import {
     useEffect,
     useCallback,
 } from 'react';
-import { classNames, Mods } from 'shared/lib/classNames/classNames';
+
 import { Portal } from '../Portal/Portal';
+
 import cls from './Modal.module.scss';
+
+import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 
 interface ModalProps {
     className?: string;
     children: ReactNode;
     isOpen?: boolean;
     onClose?: () => void;
-    lazy?: boolean
+    lazy?: boolean;
 }
 
 const ANIMATION_DELAY = 200;

@@ -39,10 +39,6 @@
     font-size: var(--font-subtitle);
 }
 
-.div {
-    font-size: var(--font-h6);
-}
-
 .primary {
     color: var(--primary-color);
 }
@@ -77,4 +73,20 @@
 
 .fullWidth {
     width: 100%;
+}
+
+.small {
+    font: var(--font-s);
+}
+
+.medium {
+    font: var(--font-m);
+}
+
+.large {
+    font: var(--font-l);
+}
+
+.gray {
+    color: var(--gray-light);
 }

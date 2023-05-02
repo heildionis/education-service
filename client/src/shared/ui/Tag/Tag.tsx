@@ -4,8 +4,11 @@ import {
     ReactNode,
     memo,
 } from 'react';
-import { Additional, Mods, classNames } from 'shared/lib/classNames/classNames';
+
 import cls from './Tag.module.scss';
+
+import { RippleEffect } from '@/shared/animations/components/RippleEffect';
+import { Additional, Mods, classNames } from '@/shared/lib/classNames/classNames';
 
 type TagColor = 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning'
 type TagSize = 'small' | 'medium' | 'large';
@@ -18,6 +21,8 @@ interface TagProps extends HTMLAttributes<HTMLSpanElement> {
     size?: TagSize;
     color?: TagColor;
     disabled?: boolean;
+    animated?: boolean;
+    animationDuration?: number;
 }
 
 export const Tag: FC<TagProps> = memo((props: TagProps) => {
@@ -28,9 +33,11 @@ export const Tag: FC<TagProps> = memo((props: TagProps) => {
         size = 'medium',
         color = 'primary',
         disabled = false,
+        animated = true,
+        animationDuration = 800,
         ...otherProps
     } = props;
-
+    const isAnimated = animated && !disabled;
     const additional: Additional = [
         className,
         cls[variant],
@@ -43,6 +50,12 @@ export const Tag: FC<TagProps> = memo((props: TagProps) => {
     return (
         <span className={classNames(cls.Tag, mods, additional)} {...otherProps}>
             {children}
+            {isAnimated && (
+                <RippleEffect
+                    className={cls.ripple}
+                    duration={animationDuration}
+                />
+            )}
         </span>
     );
 });

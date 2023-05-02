@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Typography } from '../Typography/Typography';
+
 import { Button } from './Button';
 
 export default {
@@ -24,6 +24,11 @@ Secondary.args = {
 export const Outlined = Template.bind({});
 Outlined.args = {
     variant: 'outlined',
+};
+
+export const FullWidth = Template.bind({});
+FullWidth.args = {
+    fullWidth: true,
 };
 
 export const PrimaryMedium = Template.bind({});

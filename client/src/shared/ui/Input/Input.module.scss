@@ -1,20 +1,35 @@
-.InputWrapper {
-    display: grid;
-    gap: 5px;
-}
-
 .input {
-    padding: 2px 7px;
+    padding: 6px 12px;
     outline: none;
     width: initial;
     border-radius: 6px;
-    border: 1px solid var(--gray);
     min-height: 36px;
+    color: var(--soft-color);
+    transition: 0.5s border ease-in-out;
+
+    &::placeholder {
+        color: var(--primary-color);
+    }
+
+}
+
+.primary {
     background-color: var(--bg-color);
-    color: var(--primary-color);
-    font: var(--font-m);
+    border: 1px solid var(--primary-color);
 }
 
 .fullWidth {
     width: 100%;
+}
+
+.small {
+    font: var(--font-m);
+}
+
+.medium {
+    font: var(--font-l);
+}
+
+.large {
+    font: var(--font-xl);
 }

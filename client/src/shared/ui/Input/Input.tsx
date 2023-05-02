@@ -1,20 +1,24 @@
 import {
     ChangeEvent,
-    FC,
     forwardRef,
     InputHTMLAttributes,
     memo,
-    MutableRefObject,
 } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+
 import cls from './Input.module.scss';
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value' | 'label'>
+import { Additional, classNames } from '@/shared/lib/classNames/classNames';
+
+type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value' | 'label' | 'size'>
+type InputSize = 'small' | 'medium' | 'large';
+type InputVariant = 'primary';
 
 interface InputProps extends HTMLInputProps {
     className?: string;
     onChange?: (value: string) => void;
     value?: string;
+    size?: InputSize,
+    variant?: InputVariant;
     fullWidth?: boolean;
 }
 
@@ -25,6 +29,8 @@ export const ForwardInput = (forwardRef<HTMLInputElement, InputProps>(((props, r
         value,
         placeholder,
         fullWidth = false,
+        size = 'small',
+        variant = 'primary',
         ...otherProps
     } = props;
 
@@ -32,17 +38,21 @@ export const ForwardInput = (forwardRef<HTMLInputElement, InputProps>(((props, r
         onChange?.(e.target.value);
     };
 
+    const additional: Additional = [
+        cls[size],
+        cls[variant],
+        className,
+    ];
+
     return (
-        <div className={classNames(cls.InputWrapper)}>
-            {placeholder && <div className={cls.label}>{`${placeholder}`}</div>}
-            <input
-                ref={ref}
-                className={classNames(cls.input, { [cls.fullWidth]: fullWidth }, [className])}
-                value={value}
-                onChange={onChangeHandler}
-                {...otherProps}
-            />
-        </div>
+        <input
+            placeholder={placeholder}
+            ref={ref}
+            className={classNames(cls.input, { [cls.fullWidth]: fullWidth }, additional)}
+            value={value}
+            onChange={onChangeHandler}
+            {...otherProps}
+        />
     );
 })));
 

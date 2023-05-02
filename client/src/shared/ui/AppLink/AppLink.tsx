@@ -1,9 +1,11 @@
 import { FC, ReactNode, memo } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
 import { Link, LinkProps } from 'react-router-dom';
+
 import cls from './AppLink.module.scss';
 
-type AppLinkVariant = 'primary' | 'secondary';
+import { classNames } from '@/shared/lib/classNames/classNames';
+
+type AppLinkVariant = 'primary' | 'secondary' | 'soft';
 
 interface AppLinkProps extends LinkProps {
     className?: string;

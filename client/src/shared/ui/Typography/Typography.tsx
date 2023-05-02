@@ -4,12 +4,15 @@ import {
     memo,
     ReactNode,
 } from 'react';
-import { classNames, Mods } from 'shared/lib/classNames/classNames';
+
 import cls from './Typography.module.scss';
 
+import { classNames, Mods } from '@/shared/lib/classNames/classNames';
+
 export type TypographyAlign = 'center' | 'left' | 'right' | 'inherit'
-export type TypographyColor = 'primary' | 'secondary' | 'inverted'
-export type TypographyVariant = 'title' |'subtitle' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'div'
+export type TypographyColor = 'primary' | 'secondary' | 'inverted' | 'gray';
+export type TypographyVariant = 'title' |'subtitle' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'div';
+export type TypographySize = 'small' | 'medium' | 'large' | 'disabled';
 
 interface TypographyProps extends HTMLAttributes<HTMLElement> {
     className?: string;
@@ -18,6 +21,7 @@ interface TypographyProps extends HTMLAttributes<HTMLElement> {
     align?: TypographyAlign;
     noWrap?: boolean;
     fullWidth?: boolean;
+    size?: TypographySize;
     children: ReactNode;
 }
 
@@ -29,11 +33,12 @@ export const Typography: FC<TypographyProps> = memo((props: TypographyProps) => 
         align = 'inherit',
         noWrap = false,
         children,
+        size = 'disabled',
         fullWidth,
         ...otherProps
     } = props;
     const mods: Mods = { [cls.noWrap]: noWrap, [cls.fullWidth]: fullWidth };
-    const additional: Array<string | undefined> = [className, cls[color], cls[align], cls[variant]];
+    const additional: Array<string | undefined> = [className, cls[color], cls[align], cls[variant], cls[size]];
 
     const classes = classNames(cls.Typography, mods, additional);
 
