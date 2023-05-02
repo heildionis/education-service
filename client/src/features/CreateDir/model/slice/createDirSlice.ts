@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { FileType } from 'entities/File';
+
 import { CreateDirSchema } from '../types/CreateDirSchema';
+
+import { FileType } from '@/entities/File';
 
 const initialState: CreateDirSchema = {
     name: '',

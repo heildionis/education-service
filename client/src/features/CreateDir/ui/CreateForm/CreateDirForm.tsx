@@ -1,20 +1,24 @@
 import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Input } from 'shared/ui/Input/Input';
-import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { createDirActions, createDirReducer } from 'features/CreateDir/model/slice/createDirSlice';
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Button } from 'shared/ui/Button/Button';
-import { Card } from 'shared/ui/Card';
+
 import { getCreateDirName } from '../../model/selectors/getCreateDirSelectors';
 import { createDir } from '../../model/services/createDir';
+import { createDirActions, createDirReducer } from '../../model/slice/createDirSlice';
+
 import cls from './CreateDir.module.scss';
+
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { DynamicModuleLoader, ReducerList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Button } from '@/shared/ui/Button/Button';
+import { Card } from '@/shared/ui/Card';
+import { Input } from '@/shared/ui/Input/Input';
 
 interface CreateDirFormProps {
     className?: string;
     parentId?: number | null;
+    onCreate?: () => void;
 }
 
 const reducers: ReducerList = {
@@ -22,7 +26,7 @@ const reducers: ReducerList = {
 };
 
 export const CreateDirForm: FC<CreateDirFormProps> = memo((props: CreateDirFormProps) => {
-    const { className, parentId } = props;
+    const { className, parentId, onCreate } = props;
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
     const name = useSelector(getCreateDirName);
@@ -31,13 +35,15 @@ export const CreateDirForm: FC<CreateDirFormProps> = memo((props: CreateDirFormP
         dispatch(createDirActions.setName(name));
     }, [dispatch]);
 
-    const onClick = () => {
+    const onClick = async () => {
         const isNotRootDir = parentId !== null && parentId;
-        dispatch(createDir({
+        await dispatch(createDir({
             name,
             parentId: isNotRootDir ? parentId : undefined,
         }));
         dispatch(createDirActions.setName(''));
+
+        onCreate?.();
     };
 
     return (

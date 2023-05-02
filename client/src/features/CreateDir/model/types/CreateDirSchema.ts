@@ -1,4 +1,4 @@
-import { FileType } from 'entities/File';
+import { FileType } from '@/entities/File';
 
 export interface CreateDirSchema {
     name: string;

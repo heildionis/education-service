@@ -1,7 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfig } from 'app/providers/StoreProvider';
 import { isAxiosError } from 'axios';
-import { FileEntity } from 'entities/File';
+
+import { ThunkConfig } from '@/app/providers/StoreProvider';
+import { FileEntity } from '@/entities/File';
 
 interface CreateDirProps {
     name: string;
