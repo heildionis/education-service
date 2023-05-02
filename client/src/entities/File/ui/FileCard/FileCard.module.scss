@@ -1,5 +1,4 @@
 .FileCard {
-
     &:hover .icon {
         transition: all 0.2s;
         fill: var(--primary-color-hover);
@@ -11,20 +10,12 @@
     }
 }
 
-.label {
-    color: var(--soft-color);
-}
-
 .tile {
     display: grid;
     place-items: center;
     cursor: pointer;
-    gap: 30px;
+    gap: 20px;
     height: 70px;
-
-    .label {
-        font-size: 14px;
-    }
 }
 
 .list {
@@ -53,30 +44,4 @@
         flex: 0 0 15%;
         color: var(--soft-color);
     }
-}
-
-.popover {
-    position: relative;
-    margin-left: auto;
-}
-
-.panel {
-    position: absolute;
-    bottom: -47px;
-    left: -5px;
-    z-index: 10;
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid var(--primary-color);
-    background: aliceblue;
-}
-
-.button {
-    background: none;
-}
-
-.link {
-    display: flex;
-    gap: 20px;
-    flex: 0 0 40%;
 }

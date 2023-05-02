@@ -1,15 +1,18 @@
 import { FC, ReactNode, memo } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Typography } from 'shared/ui/Typography/Typography';
 import { useTranslation } from 'react-i18next';
+
 import { FileEntity, FileView } from '../../model/types/file';
-import cls from './FileList.module.scss';
 import { FileCard } from '../FileCard/FileCard';
 import { FileCardSkeleton } from '../FileCard/FileCardSkeleton';
 
+import cls from './FileList.module.scss';
+
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Typography } from '@/shared/ui/Typography/Typography';
+
 interface FileListProps {
     className?: string;
-    files: FileEntity[];
+    files?: FileEntity[];
     isLoading?: boolean;
     view?: FileView;
     onOpenDir?: (file: FileEntity) => () => void;
@@ -46,17 +49,31 @@ export const FileList: FC<FileListProps> = memo((props: FileListProps) => {
         />
     );
 
+    if (isLoading) {
+        return (
+            <div className={classNames(cls.FileList, {}, [className, cls[view]])}>
+                {generateSkeleton(view)}
+            </div>
+        );
+    }
+
+    if (!files || files.length === 0) {
+        return (
+            <Typography
+                align='center'
+                variant='h3'
+                fullWidth
+            >
+                {t('Файлы не найдены')}
+            </Typography>
+        );
+    }
+
     return (
-        <div className={classNames(cls.FileList, {}, [className, cls[view]])}>
-            {files.length > 0 ? files.map(renderFile) : (
-                <Typography
-                    align='center'
-                    variant='h3'
-                >
-                    {t('Файлы не найдены')}
-                </Typography>
-            )}
-            {isLoading && generateSkeleton(view)}
-        </div>
+        <>
+            <div className={classNames(cls.FileList, {}, [className, cls[view]])}>
+                {files.map(renderFile)}
+            </div>
+        </>
     );
 });
