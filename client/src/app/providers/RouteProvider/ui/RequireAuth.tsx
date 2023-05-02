@@ -1,8 +1,8 @@
-import { getUserAuthData } from 'entities/User';
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
-import { RoutePath } from 'shared/config/routes/routes';
+import { getUserAuthData } from '@/entities/User';
+import { RoutePath } from '@/shared/config/routes/routes';
 
 interface RequireAuthProps {
     children: JSX.Element

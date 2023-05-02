@@ -6,17 +6,18 @@ import {
     ReducersMapObject,
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
-import { UserSchema } from 'entities/User';
-import { LoginSchema } from 'features/AuthBy';
-import { CreateDirSchema } from 'features/CreateDir';
-import { FileUploadSchema } from 'features/FileUpload';
-import { FileViewSchema } from 'features/FileViewSelector';
-import { RegistrationSchema } from 'features/Registration';
-import { ScrollControllerSchema } from 'features/ScrollController';
-import { FilesPageSchema } from 'pages/FilesPage';
-import { FilesTableSchema } from 'widgets/FilesTable';
+import { UserSchema } from '@/entities/User';
+import { LoginSchema } from '@/features/AuthBy';
+import { CreateDirSchema } from '@/features/CreateDir';
+import { FileUploadSchema } from '@/features/FileUpload';
+import { FileViewSchema } from '@/features/FileViewSelector';
+import { RegistrationSchema } from '@/features/Registration';
+import { ScrollControllerSchema } from '@/features/ScrollController';
+import { FilesPageSchema } from '@/pages/FilesPage';
+import { rtkApi } from '@/shared/api';
 
 export interface StateSchema {
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
     user: UserSchema;
     scrollController: ScrollControllerSchema;
 
@@ -27,7 +28,6 @@ export interface StateSchema {
     filesPage?: FilesPageSchema;
     createDir?: CreateDirSchema;
     fileUpload?: FileUploadSchema;
-    filesTable?: FilesTableSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
