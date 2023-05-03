@@ -57,11 +57,15 @@ export const Navbar: FC<NavbarProps> = memo((props) => {
     if (isAuth) {
         return (
             <Row className={classNames(cls.Navbar, {}, [className])}>
-                <Container className={cls.container}>
-                    <div className={cls.logo} />
+                <Container>
                     <Row justify='between'>
-                        <AppLink to={getRouteFile('null')}>{t('Файлы')}</AppLink>
-                        <Button className={cls.authBtn} onClick={onClickLogout}>{t('Выйти')}</Button>
+                        <AppLink variant='soft' to={getRouteFile('null')}>{t('Файлы')}</AppLink>
+                        <Row gap='4'>
+                            <Link to='https://t.me/heildionis' target='_blank' className={cls.icon}>
+                                <TelegramIcon fill='white' />
+                            </Link>
+                            <Button className={cls.authBtn} onClick={onClickLogout}>{t('Выйти')}</Button>
+                        </Row>
                     </Row>
                 </Container>
             </Row>

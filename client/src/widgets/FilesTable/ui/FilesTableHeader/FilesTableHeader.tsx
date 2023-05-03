@@ -22,7 +22,6 @@ export const FilesTableHeader = memo((props: FilesTableHeaderProps) => {
         <>
             <Typography
                 variant='h2'
-                color='secondary'
                 align='center'
             >
                 {t('Файлы')}

@@ -63,7 +63,7 @@ export const FileViewSelector: FC<FileViewSelectorProps> = memo((props: FileView
                     >
                         <Icon
                             Svg={fileView.icon}
-                            variant={fileView.view === view ? 'accent' : 'soft'}
+                            variant={fileView.view === view ? 'accent' : 'primary'}
                         />
                     </Button>
                 ))}

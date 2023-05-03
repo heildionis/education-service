@@ -31,16 +31,17 @@ export const FileOptions: FC<FileOptionsProps> = memo((props: FileOptionsProps) 
     return (
         <div className={classNames(cls.FileOptions, {}, [className])} onClick={onOpenClick}>
             <Menu>
-                <Menu.Button className={cls.btn}><Icon className={cls.icon} Svg={MenuIcon} /></Menu.Button>
+                <Menu.Button className={cls.btn}><Icon variant='secondary' Svg={MenuIcon} /></Menu.Button>
                 <Menu.Items className={cls.items}>
-                    <Card className={cls.card}>
-                        <Typography color='inverted'>{t('Меню')}</Typography>
+                    <Card className={cls.card} variant='secondary'>
+                        <Typography variant='h5' color='soft'>{t('Меню')}</Typography>
                         <Menu.Item>
                             <Button
                                 className={cls.deleteBtn}
                                 variant='outlined'
                                 fullWidth
                                 onClick={onDeleteClick}
+                                isAnimated={false}
                             >
                                 {t('Удалить')}
                                 <Icon Svg={GarbageIcon} variant='secondary' />
@@ -53,6 +54,7 @@ export const FileOptions: FC<FileOptionsProps> = memo((props: FileOptionsProps) 
                                     variant='outlined'
                                     fullWidth
                                     onClick={onDownloadClick}
+                                    isAnimated={false}
                                 >
                                     {t('Скачать')}
                                     <Icon Svg={GarbageIcon} variant='secondary' />

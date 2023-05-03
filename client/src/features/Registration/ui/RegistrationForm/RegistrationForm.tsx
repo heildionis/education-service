@@ -5,7 +5,6 @@ import {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 import { getRegistrationEmail } from '../../model/selectors/getRegistrationEmail/getRegistrationEmail';
 import { getRegistrationPassword } from '../../model/selectors/getRegistrationPassword/getRegistrationPassword';
@@ -43,7 +42,6 @@ const RegistrationForm: FC<RegistrationFormProps> = memo((props) => {
     const email = useSelector(getRegistrationEmail);
     const username = useSelector(getRegistrationUsername);
     const password = useSelector(getRegistrationPassword);
-    const navigate = useNavigate();
 
     const onChangeUsername = useCallback((value: string) => {
         dispatch(registrationActions.setUsername(value));
@@ -57,23 +55,23 @@ const RegistrationForm: FC<RegistrationFormProps> = memo((props) => {
         dispatch(registrationActions.setPassword(value));
     }, [dispatch]);
 
-    const onRegistrationClick = async () => {
+    const onRegistrationClick = useCallback(async () => {
         const result = await dispatch(register({ username, email, password }));
         if (result.meta.requestStatus === 'fulfilled') {
             onSuccess();
         }
-    };
+    }, [dispatch, onSuccess, email, password, username]);
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
             <Card variant='secondary' className={cls.card}>
                 <Column gap='16'>
-                    <Icon Svg={AuhtPersonIcon} variant='secondary' />
+                    <Icon Svg={AuhtPersonIcon} variant='soft' />
                     <Typography
-                        size='large'
                         className={cls.title}
-                        color='inverted'
+                        color='soft'
                         align='center'
+                        variant='h5'
                     >
                         {t('Зарегистрируйтесь и получите доступ к файлам')}
                     </Typography>
@@ -82,7 +80,8 @@ const RegistrationForm: FC<RegistrationFormProps> = memo((props) => {
             <Column gap='16' fullWidth className={classNames(cls.form, {}, [className])}>
                 <Column fullWidth align='start' gap='2'>
                     <Typography
-                        color='gray'
+                        color='disabled'
+                        variant='h5'
                     >
                         {t('Имя пользователя')}
                     </Typography>
@@ -96,7 +95,8 @@ const RegistrationForm: FC<RegistrationFormProps> = memo((props) => {
                 </Column>
                 <Column fullWidth align='start' gap='2'>
                     <Typography
-                        color='gray'
+                        color='disabled'
+                        variant='h5'
                     >
                         {t('Почта')}
                     </Typography>
@@ -110,7 +110,8 @@ const RegistrationForm: FC<RegistrationFormProps> = memo((props) => {
                 </Column>
                 <Column fullWidth align='start' gap='2'>
                     <Typography
-                        color='gray'
+                        color='disabled'
+                        variant='h5'
                     >
                         {t('Пароль')}
                     </Typography>
@@ -124,7 +125,8 @@ const RegistrationForm: FC<RegistrationFormProps> = memo((props) => {
                 </Column>
                 <Column fullWidth align='start' gap='2'>
                     <Typography
-                        color='gray'
+                        color='disabled'
+                        variant='h5'
                     >
                         {t('Повторите пароль')}
                     </Typography>
@@ -147,8 +149,8 @@ const RegistrationForm: FC<RegistrationFormProps> = memo((props) => {
                 <Typography
                     align='center'
                     className={cls.privacy}
-                    color='gray'
-                    size='small'
+                    color='disabled'
+                    variant='h6'
                 >
                     {t('Нажимая кнопку "Зарегистрироваться" вы принимаете')}
                     <AppLink to='/'>

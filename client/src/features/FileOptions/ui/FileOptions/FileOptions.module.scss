@@ -8,11 +8,11 @@
 
 .items {
     position: absolute;
+    z-index: 10;
+    top: 2rem;
+    left: 0;
     display: flex;
     flex-direction: column;
-    top: 30px;
-    left: 0;
-    z-index: 10;
 }
 
 .icon {
@@ -22,17 +22,16 @@
 }
 
 .card {
-    width: 175px;
-    padding: 10px;
-    background: var(--inverted-bg-color);
     display: flex;
+    width: 12rem;
     flex-direction: column;
-    gap: 5px;
+    padding: 0.5rem;
+    gap: 0.25rem;
 }
 
 .deleteBtn {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 4px;
+    gap: 0.5rem;
 }

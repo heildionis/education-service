@@ -1,11 +1,10 @@
 .Navbar {
     height: var(--navbar-height);
-    background: var(--soft-color);
+    background: var(--inverted-bg-color);
 }
 
-.container {
-    display: grid;
-    align-items: center;
-    grid-template-columns: var(--sidebar-width) 1fr;
-    gap: 32px;
+.icon {
+    &:hover {
+        opacity: 0.8;
+    }
 }

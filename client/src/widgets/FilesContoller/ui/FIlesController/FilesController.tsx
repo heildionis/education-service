@@ -19,9 +19,9 @@ export const FilesController: FC<SidebarProps> = memo((props: SidebarProps) => {
     const { className, parentId } = props;
 
     return (
-        <Card className={classNames(cls.FileController, {}, [className])}>
+        <Card variant='secondary' className={classNames(cls.FileController, {}, [className])}>
             <Row justify='center'>
-                <Icon className={cls.icon} Svg={BMSTUIcon} variant='secondary' />
+                <Icon className={cls.icon} Svg={BMSTUIcon} variant='soft' />
             </Row>
             <Column gap='8'>
                 <FileUpload parentId={parentId} />

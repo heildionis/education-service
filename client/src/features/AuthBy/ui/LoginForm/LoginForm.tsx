@@ -56,12 +56,12 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
             <Card variant='secondary' className={cls.card}>
                 <Column gap='16'>
-                    <Icon Svg={AuhtPersonIcon} variant='secondary' />
+                    <Icon Svg={AuhtPersonIcon} variant='soft' />
                     <Typography
-                        size='large'
                         className={cls.title}
-                        color='inverted'
+                        color='soft'
                         align='center'
+                        variant='h5'
                     >
                         {t('Войдите и получите доступ к файлам')}
                     </Typography>
@@ -70,7 +70,8 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
             <Column gap='16' className={classNames(cls.form, {}, [className])} fullWidth>
                 <Column fullWidth align='start' gap='2'>
                     <Typography
-                        color='gray'
+                        color='disabled'
+                        variant='h5'
                     >
                         {t('Почта')}
                     </Typography>
@@ -83,7 +84,8 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
                 </Column>
                 <Column fullWidth align='start' gap='2'>
                     <Typography
-                        color='gray'
+                        color='disabled'
+                        variant='h5'
                     >
                         {t('Пароль')}
                     </Typography>
@@ -106,8 +108,8 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
                 <Typography
                     align='center'
                     className={cls.privacy}
-                    color='gray'
-                    size='small'
+                    color='disabled'
+                    variant='h6'
                 >
                     {t('Нажимая кнопку "Войти" вы принимаете')}
                     <AppLink to='/'>

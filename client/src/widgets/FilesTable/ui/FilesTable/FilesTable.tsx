@@ -59,7 +59,7 @@ export const FilesTable: FC<FilesTableProps> = memo((props: FilesTableProps) => 
                 currentDir={parentId}
                 onBackClick={onBackClick}
             />
-            <Divider variant='medium' />
+            <Divider variant='small' color='secondary' />
             <FileList
                 files={data?.files}
                 view={view}
