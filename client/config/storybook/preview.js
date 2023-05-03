@@ -1,7 +1,7 @@
 import { addDecorator } from '@storybook/react';
-import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator';
-import { ThemeDecorator } from '../../src/shared/config/storybook/ThemeDecorator';
+
 import { RouteDecorator } from '../../src/shared/config/storybook/RouteDecorator';
+import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator';
 
 export const parameters = {
     actions: { argTypesRegex: '^on[A-Z].*' },
@@ -10,8 +10,14 @@ export const parameters = {
             date: /Date$/,
         },
     },
+    themes: {
+        default: 'light',
+        list: [
+            { name: 'light', class: ['app', 'app_light_theme'], color: '#F1F7FD' },
+            { name: 'dark', class: ['app', 'app_light_theme'], color: '#0452ff' },
+        ],
+    },
 };
 
 addDecorator(StyleDecorator);
-addDecorator(ThemeDecorator('app_light_theme'));
 addDecorator(RouteDecorator);
