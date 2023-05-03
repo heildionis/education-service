@@ -1,20 +1,20 @@
-@import './reset.scss';
-@import './variables/global.scss';
-@import './themes/dark.scss';
-@import './themes/light.scss';
-@import './fonts/fonts.scss';
+@import './reset';
+@import './variables/global';
+@import './themes/dark';
+@import './themes/light';
+@import './fonts/fonts';
 
 body {
-    font: var(--font-m);
     color: var(--primary-color);
+    font: var(--font-m);
 }
 
 .app {
-    background: var(--bg-color);
     min-height: 100vh;
+    background: var(--bg-color);
 }
 
 .content-page {
-    padding-top: 20px;
     position: relative;
+    padding-top: 1.25rem;
 }
