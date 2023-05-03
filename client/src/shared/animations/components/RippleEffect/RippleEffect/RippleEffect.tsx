@@ -3,6 +3,7 @@ import React, {
     MouseEvent,
     FC,
     useCallback,
+    memo,
 } from 'react';
 
 import cls from './RippleEffect.module.scss';
@@ -32,7 +33,7 @@ const ripplePosition = (ripple: Ripple, duration: number, color?: string) => ({
     color,
 });
 
-export const RippleEffect: FC<RippleEffectProps> = ({ className, duration = 800, color }) => {
+export const RippleEffect: FC<RippleEffectProps> = memo(({ className, duration = 800, color }) => {
     const [rippleArray, setRippleArray] = useState<Ripple[]>([]);
 
     const onAnimationEnd = useCallback((key: number) => {
@@ -73,4 +74,4 @@ export const RippleEffect: FC<RippleEffectProps> = ({ className, duration = 800,
             ))}
         </div>
     );
-};
+});

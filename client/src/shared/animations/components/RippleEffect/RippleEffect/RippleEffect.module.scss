@@ -1,17 +1,14 @@
 .RippleContainer {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    inset: 0;
 
     span {
-        background: var(--secondary-color);
-        transform: scale(0);
-        border-radius: 100%;
         position: absolute;
-        opacity: 0.55;
+        border-radius: 100%;
         animation-name: ripple;
+        background: var(--secondary-color);
+        opacity: 0.55;
+        transform: scale(0);
     }
 
     @keyframes ripple {
