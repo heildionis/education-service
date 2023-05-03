@@ -1,5 +1,4 @@
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
-import CircularDependencyPlugin from 'circular-dependency-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
@@ -27,13 +26,6 @@ export const buildPlugins = (options: BuildOptions): webpack.WebpackPluginInstan
             __IS_DEV__: JSON.stringify(isDev),
             __API__: JSON.stringify(apiUrl),
             __PROJECT__: JSON.stringify(project),
-        }),
-        new CircularDependencyPlugin({
-            exclude: /node_modules/,
-            include: /dir/,
-            failOnError: true,
-            allowAsyncCycles: false,
-            cwd: process.cwd(),
         }),
         new ForkTsCheckerWebpackPlugin({
             typescript: {
