@@ -1,35 +1,23 @@
-.FileCard {
-    &:hover .icon {
-        transition: all 0.2s;
-        fill: var(--primary-color-hover);
-    }
-
-    &:hover .label {
-        transition: all 0.2s;
-        color: var(--primary-color-hover);
-    }
-}
-
 .tile {
     display: grid;
-    place-items: center;
+    height: 4rem;
     cursor: pointer;
-    gap: 20px;
-    height: 70px;
+    gap: 0.5rem;
+    place-items: center;
 }
 
 .list {
     display: flex;
+    height: 3rem;
     align-items: center;
-    height: 50px;
-    border-radius: 10px;
-    padding: 0 10px;
-    gap: 20px;
+    padding: 0 0.5rem;
+    border-radius: 0.5rem;
     cursor: pointer;
+    gap: 1.5rem;
 
     .icon {
-        width: 30px;
-        height: 30px;
+        width: 2rem;
+        height: 2rem;
     }
 
     .label {
@@ -42,6 +30,15 @@
 
     .date {
         flex: 0 0 15%;
-        color: var(--soft-color);
+    }
+}
+
+.FileCard {
+    &:hover .icon {
+        transition: all 0.2s;
+    }
+
+    &:hover .label {
+        transition: all 0.2s;
     }
 }

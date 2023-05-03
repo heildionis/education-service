@@ -8,7 +8,6 @@ import { FileEntity, FileView } from '../../model/types/file';
 
 import cls from './FileCard.module.scss';
 
-import { RippleWrapper } from '@/shared/animations/components/RippleEffect';
 import { FileIcon, FolderIcon } from '@/shared/assets/icons';
 import { getRouteFile } from '@/shared/config/routes/routes';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -16,6 +15,7 @@ import { convertDate } from '@/shared/lib/converters';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { Card } from '@/shared/ui/Card';
 import { Icon } from '@/shared/ui/Icon/Icon';
+import { Row } from '@/shared/ui/Stack';
 import { Typography } from '@/shared/ui/Typography/Typography';
 
 interface FileCardProps extends HTMLAttributes<HTMLDivElement> {
@@ -43,16 +43,20 @@ export const FileCard: FC<FileCardProps> = (props: FileCardProps) => {
                 onClick={onOpenDir?.(file)}
                 {...otherProps}
             >
-                <RippleWrapper>
-                    <Icon className={cls.icon} Svg={file.type === 'dir' ? FolderIcon : FileIcon} />
-                </RippleWrapper>
                 <AppLink
                     to={getRouteFile(String(file.id))}
                     className={cls.label}
                 >
-                    <Typography variant='h5' color='secondary'>
-                        {file.name}
-                    </Typography>
+                    <Row gap='8'>
+                        <Icon
+                            className={cls.icon}
+                            Svg={file.type === 'dir' ? FolderIcon : FileIcon}
+                            variant='secondary'
+                        />
+                        <Typography variant='h5' color='secondary'>
+                            {file.name}
+                        </Typography>
+                    </Row>
                 </AppLink>
                 <Typography align='center' className={cls.size}>
                     {file.type !== 'dir' ? `${file.size}B` : ''}
@@ -70,14 +74,14 @@ export const FileCard: FC<FileCardProps> = (props: FileCardProps) => {
                 onClick={onOpenDir?.(file)}
                 {...otherProps}
             >
-                <RippleWrapper>
-                    <Icon className={cls.icon} Svg={file.type === 'dir' ? FolderIcon : FileIcon} />
-                </RippleWrapper>
+                <Icon
+                    className={cls.icon}
+                    Svg={file.type === 'dir' ? FolderIcon : FileIcon}
+                    variant='secondary'
+                />
                 <Typography
                     className={cls.label}
                     variant='div'
-                    size='medium'
-                    color='secondary'
                 >
                     {file.name}
                 </Typography>

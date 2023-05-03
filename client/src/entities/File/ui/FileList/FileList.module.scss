@@ -1,13 +1,11 @@
 .FileList {
-    padding-top: 20px;
     width: 100%;
 }
 
 .tile {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(60px, 80px));
-    grid-column-gap: 8px;
-    grid-row-gap: 32px;
+    grid-gap: 2rem 0.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(4rem, 5rem));
 }
 
 .list {
