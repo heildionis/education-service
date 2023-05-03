@@ -1,22 +1,15 @@
 .app_dark_theme {
-    --bg-color: #006CDC;
-    --inverted-bg-color: #F1F7FD;
+    // Backgrounds
+    --bg-color: #f1f7fd;
+    --inverted-bg-color: #000;
 
-    --bg-color-hover: #F1F7FD;
-    --inverted-bg-color-hover: #006cdc;
-
-    --primary-color: #F1F7FD;
+    // Colors
     --secondary-color: #006cdc;
-    --accent-color: #0099FF;
+    --accent-color: #09f;
+    --soft-color: #f1f7fd;
+    --disabled-color: #6c757d;
 
-    --black-color: #000;
-
-    --primary-color-hover: #F1F7FD;
-    --secondary-color-hover: #006cdc;
-    --accent-color-hover: #0099FF;
-
-    --skeleton-color-from: #0099FF;
-    --skeleton-color-to: #006cdc;
-
-    --gray-color: #eee;
+    // Skeleton
+    --skeleton-color-from: hsl(200deg 20% 80%);
+    --skeleton-color-to: hsl(200deg 20% 95%);
 }
