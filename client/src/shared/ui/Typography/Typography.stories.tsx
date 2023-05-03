@@ -2,9 +2,6 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Typography } from './Typography';
 
-import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
-import { Theme } from '@/shared/lib/themes';
-
 export default {
     title: 'shared/Typography',
     component: Typography,
@@ -17,88 +14,87 @@ const Template: ComponentStory<typeof Typography> = (args) => <Typography {...ar
 
 export const Primary = Template.bind({});
 Primary.args = {
-    variant: 'div',
     color: 'primary',
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-    variant: 'div',
     color: 'secondary',
 };
 
-export const PrimaryDark = Template.bind({});
-PrimaryDark.args = {
-    variant: 'div',
-    color: 'primary',
+export const Accent = Template.bind({});
+Accent.args = {
+    color: 'accent',
 };
-PrimaryDark.decorators = [ThemeDecorator(Theme.DARK)];
 
-export const SecondaryDark = Template.bind({});
-SecondaryDark.args = {
-    variant: 'div',
-    color: 'secondary',
+export const Soft = Template.bind({});
+Soft.args = {
+    color: 'soft',
 };
-SecondaryDark.decorators = [ThemeDecorator(Theme.DARK)];
 
-export const h1 = Template.bind({});
-h1.args = {
+export const Disabled = Template.bind({});
+Disabled.args = {
+    color: 'disabled',
+};
+
+export const H1 = Template.bind({});
+H1.args = {
     variant: 'h1',
 };
 
-export const h2 = Template.bind({});
-h2.args = {
+export const H2 = Template.bind({});
+H2.args = {
     variant: 'h2',
 };
 
-export const h3 = Template.bind({});
-h3.args = {
+export const H3 = Template.bind({});
+H3.args = {
     variant: 'h3',
 };
 
-export const h4 = Template.bind({});
-h4.args = {
+export const H4 = Template.bind({});
+H4.args = {
     variant: 'h4',
 };
 
-export const h5 = Template.bind({});
-h5.args = {
+export const H5 = Template.bind({});
+H5.args = {
     variant: 'h5',
 };
 
-export const h6 = Template.bind({});
-h6.args = {
+export const H6 = Template.bind({});
+H6.args = {
     variant: 'h6',
 };
-export const p = Template.bind({});
-p.args = {
+export const P = Template.bind({});
+P.args = {
     variant: 'p',
 };
-export const title = Template.bind({});
-title.args = {
+export const Title = Template.bind({});
+Title.args = {
     variant: 'title',
 };
-export const subtitle = Template.bind({});
-subtitle.args = {
+export const Subtitle = Template.bind({});
+Subtitle.args = {
     variant: 'subtitle',
 };
 
-export const alignCenter = Template.bind({});
-alignCenter.args = {
+export const AlignCenter = Template.bind({});
+AlignCenter.args = {
     align: 'center',
 };
 
-export const alignInherit = Template.bind({});
-alignInherit.args = {
+export const AlignInherit = Template.bind({});
+AlignInherit.args = {
     align: 'inherit',
 };
 
-export const alignLeft = Template.bind({});
-alignLeft.args = {
+export const AlignLeft = Template.bind({});
+AlignLeft.args = {
     align: 'left',
 };
 
-export const alignRight = Template.bind({});
-alignRight.args = {
+export const AlignRight = Template.bind({});
+AlignRight.args = {
     align: 'right',
 };

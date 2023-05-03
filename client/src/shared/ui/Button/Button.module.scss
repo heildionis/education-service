@@ -1,68 +1,63 @@
 .Button {
-    cursor: pointer;
-    color: var(--primary-color);
-    padding: 6px 15px;
-    background: none;
-    font: var(--font-m);
-    color: var(--secondary-color);
-    background: var(--inverted-bg-color);
-    border-radius: 6px;
     position: relative;
     overflow: hidden;
-    transition: 0.3s background ease;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background: var(--inverted-bg-color);
+    color: var(--secondary-color);
+    cursor: pointer;
+    font: var(--font-m);
+    transition: 0.3s opacity ease;
+
+    &:hover {
+        opacity: 0.8;
+    }
 }
 
 .primary {
-    color: var(--secondary-color);
-    background: var(--inverted-bg-color);
+    background: var(--secondary-color);
+    color: var(--soft-color);
 
     .ripple span {
-        background-color: var(--secondary-color);
-    }
-
-    &:hover {
-        background: var(--inverted-bg-color-hover);
+        background-color: var(--soft-color);
     }
 }
 
 .secondary {
-    color: var(--primary-color);
-    background: var(--bg-color);
+    background: var(--primary-color);
+    color: var(--soft-color);
 
     .ripple span {
-        background-color: var(--primary-color);
+        background-color: var(--soft-color);
     }
 
-    &:hover {
-        background: var(--bg-color-hover);
-    }
+
 }
 
 .outlined {
-    color: var(--primary-color);
+    border: 0.1rem solid var(--secondary-color);
     background: var(--bg-color);
-    border: 1px solid var(--primary-color);
+    color: var(--secondary-color);
 
     .ripple span {
-        background-color: var(--primary-color);
-    }
-
-    &:hover {
-        background: var(--bg-color-hover);
+        background-color: var(--secondary-color);
     }
 }
 
 .clear {
     padding: 0;
-    border: 0;
-    margin: 0;
-    background: none;
     border: none;
     border-radius: none;
+    margin: 0;
+    background: none;
 }
 
 .disabled {
     opacity: 0.5;
+
+    &:hover {
+        opacity: 0.5;
+    }
 }
 
 .small {

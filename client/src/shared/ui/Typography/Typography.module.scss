@@ -1,5 +1,4 @@
 .Typography {
-    text-decoration: none;
     line-height: 120%;
 }
 
@@ -31,26 +30,6 @@
     font-size: var(--font-p);
 }
 
-.title {
-    font-size: var(--font-title);
-}
-
-.subtitle {
-    font-size: var(--font-subtitle);
-}
-
-.primary {
-    color: var(--primary-color);
-}
-
-.secondary {
-    color: var(--soft-color);
-}
-
-.inverted {
-    color: var(--secondary-color);
-}
-
 .center {
     text-align: center;
 }
@@ -75,18 +54,22 @@
     width: 100%;
 }
 
-.small {
+.xs {
+    font: var(--font-xs);
+}
+
+.sm {
     font: var(--font-s);
 }
 
-.medium {
+.md {
     font: var(--font-m);
 }
 
-.large {
+.lg {
     font: var(--font-l);
 }
 
-.gray {
-    color: var(--gray-light);
+.xl {
+    font: var(--font-xl);
 }

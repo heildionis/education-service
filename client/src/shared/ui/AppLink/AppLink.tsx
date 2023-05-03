@@ -1,16 +1,17 @@
 import { FC, ReactNode, memo } from 'react';
 import { Link, LinkProps } from 'react-router-dom';
 
+import { UIVariant } from '../global';
+import variants from '../global.module.scss';
+
 import cls from './AppLink.module.scss';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 
-type AppLinkVariant = 'primary' | 'secondary' | 'soft';
-
 interface AppLinkProps extends LinkProps {
     className?: string;
     children: ReactNode;
-    variant?: AppLinkVariant;
+    variant?: UIVariant;
 }
 
 export const AppLink: FC<AppLinkProps> = memo((props: AppLinkProps) => {
@@ -25,7 +26,7 @@ export const AppLink: FC<AppLinkProps> = memo((props: AppLinkProps) => {
     return (
         <Link
             to={to}
-            className={classNames(cls.AppLink, {}, [className, cls[variant]])}
+            className={classNames(cls.AppLink, {}, [className, variants[variant]])}
             {...otherProps}
         >
             {children}

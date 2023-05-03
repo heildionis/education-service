@@ -14,14 +14,14 @@ export type ButtonVariant = 'primary' | 'secondary' | 'outlined' | 'clear'
 export type ButtonSize = 'small' | 'medium' | 'large'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-   className?: string;
-   children: ReactNode;
-   isAnimated?: boolean
-   variant?: ButtonVariant;
-   size?: ButtonSize;
-   square?: boolean;
-   animationDuration?: number;
-   fullWidth?: boolean;
+    className?: string;
+    children: ReactNode;
+    isAnimated?: boolean
+    variant?: ButtonVariant;
+    size?: ButtonSize;
+    square?: boolean;
+    animationDuration?: number;
+    fullWidth?: boolean;
 }
 
 export const Button: FC<ButtonProps> = memo((props) => {

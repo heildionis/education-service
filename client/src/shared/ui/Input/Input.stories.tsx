@@ -2,9 +2,6 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Input } from './Input';
 
-import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
-import { Theme } from '@/shared/lib/themes';
-
 export default {
     title: 'shared/Input',
     component: Input,
@@ -19,9 +16,3 @@ export const Primary = Template.bind({});
 Primary.args = {
 
 };
-
-export const Dark = Template.bind({});
-Dark.args = {
-
-};
-Dark.decorators = [ThemeDecorator(Theme.DARK)];

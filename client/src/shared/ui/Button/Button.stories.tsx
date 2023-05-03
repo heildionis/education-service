@@ -26,6 +26,11 @@ Outlined.args = {
     variant: 'outlined',
 };
 
+export const Clear = Template.bind({});
+Clear.args = {
+    variant: 'clear',
+};
+
 export const FullWidth = Template.bind({});
 FullWidth.args = {
     fullWidth: true,

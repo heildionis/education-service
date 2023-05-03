@@ -52,6 +52,8 @@ export const Skeleton: FC<SkeletonProps> = memo((props: SkeletonProps) => {
             style={styles}
             className={classNames(cls.Skeleton, {}, additional)}
             {...otherProps}
-        />
+        >
+            {children}
+        </div>
     );
 });

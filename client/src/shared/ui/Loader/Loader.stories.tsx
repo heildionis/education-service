@@ -2,9 +2,6 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Loader } from './Loader';
 
-import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
-import { Theme } from '@/shared/lib/themes';
-
 export default {
     title: 'shared/Loader',
     component: Loader,
@@ -15,10 +12,7 @@ export default {
 
 const Template: ComponentStory<typeof Loader> = (args) => <Loader {...args} />;
 
-export const Light = Template.bind({});
-Light.args = {
+export const Primary = Template.bind({});
+Primary.args = {
 
 };
-
-export const Dark = Template.bind({});
-Dark.decorators = [ThemeDecorator(Theme.DARK)];

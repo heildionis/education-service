@@ -5,20 +5,22 @@ import {
     memo,
 } from 'react';
 
+import { UIVariant } from '../global';
+import variants from '../global.module.scss';
+
 import cls from './Input.module.scss';
 
 import { Additional, classNames } from '@/shared/lib/classNames/classNames';
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value' | 'label' | 'size'>
 type InputSize = 'small' | 'medium' | 'large';
-type InputVariant = 'primary';
 
 interface InputProps extends HTMLInputProps {
     className?: string;
     onChange?: (value: string) => void;
     value?: string;
     size?: InputSize,
-    variant?: InputVariant;
+    variant?: UIVariant;
     fullWidth?: boolean;
 }
 
@@ -40,7 +42,7 @@ export const ForwardInput = (forwardRef<HTMLInputElement, InputProps>(((props, r
 
     const additional: Additional = [
         cls[size],
-        cls[variant],
+        variants[variant],
         className,
     ];
 

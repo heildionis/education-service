@@ -18,7 +18,27 @@ export default {
 
 const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;
 
-export const Normal = Template.bind({});
-Normal.args = {
+export const Primary = Template.bind({});
+Primary.args = {
+    variant: 'primary',
+};
 
+export const Secondary = Template.bind({});
+Secondary.args = {
+    variant: 'secondary',
+};
+
+export const Soft = Template.bind({});
+Soft.args = {
+    variant: 'soft',
+};
+
+export const Accent = Template.bind({});
+Accent.args = {
+    variant: 'accent',
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+    variant: 'disabled',
 };

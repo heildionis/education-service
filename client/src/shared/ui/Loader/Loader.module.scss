@@ -1,89 +1,91 @@
 .Loader {
-    color: official;
-    display: inline-block;
     position: relative;
-    width: 80px;
-    height: 80px;
+    display: inline-block;
+    width: 5rem;
+    height: 5rem;
+    color: official;
 }
 
 .Loader div {
-    transform-origin: 40px 40px;
-    animation: Loader 1.2s linear infinite;
+    animation: loader 1.2s linear infinite;
+    transform-origin: 2.5rem 2.5rem;
 }
 
-.Loader div:after {
-    content: " ";
-    display: block;
+/* stylelint-disable unit-allowed-list */
+
+.Loader div::after {
     position: absolute;
     top: 3px;
     left: 37px;
+    display: block;
     width: 6px;
     height: 18px;
     border-radius: 20%;
     background: var(--inverted-bg-color);
+    content: " ";
 }
 
 .Loader div:nth-child(1) {
-    transform: rotate(0deg);
     animation-delay: -1.1s;
+    transform: rotate(0deg);
 }
 
 .Loader div:nth-child(2) {
-    transform: rotate(30deg);
     animation-delay: -1s;
+    transform: rotate(30deg);
 }
 
 .Loader div:nth-child(3) {
-    transform: rotate(60deg);
     animation-delay: -0.9s;
+    transform: rotate(60deg);
 }
 
 .Loader div:nth-child(4) {
-    transform: rotate(90deg);
     animation-delay: -0.8s;
+    transform: rotate(90deg);
 }
 
 .Loader div:nth-child(5) {
-    transform: rotate(120deg);
     animation-delay: -0.7s;
+    transform: rotate(120deg);
 }
 
 .Loader div:nth-child(6) {
-    transform: rotate(150deg);
     animation-delay: -0.6s;
+    transform: rotate(150deg);
 }
 
 .Loader div:nth-child(7) {
-    transform: rotate(180deg);
     animation-delay: -0.5s;
+    transform: rotate(180deg);
 }
 
 .Loader div:nth-child(8) {
-    transform: rotate(210deg);
     animation-delay: -0.4s;
+    transform: rotate(210deg);
 }
 
 .Loader div:nth-child(9) {
-    transform: rotate(240deg);
     animation-delay: -0.3s;
+    transform: rotate(240deg);
 }
 
 .Loader div:nth-child(10) {
-    transform: rotate(270deg);
     animation-delay: -0.2s;
+    transform: rotate(270deg);
 }
 
 .Loader div:nth-child(11) {
-    transform: rotate(300deg);
     animation-delay: -0.1s;
+    transform: rotate(300deg);
 }
 
 .Loader div:nth-child(12) {
-    transform: rotate(330deg);
     animation-delay: 0s;
+    transform: rotate(330deg);
 }
 
-@keyframes Loader {
+@keyframes loader {
     0% {
         opacity: 1;
     }
