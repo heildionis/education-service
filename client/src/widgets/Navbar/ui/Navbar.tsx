@@ -14,7 +14,7 @@ import { getUserAuthData, logout } from '@/entities/User';
 import { LoginModal } from '@/features/AuthBy';
 import { RegistrationModal } from '@/features/Registration';
 import { TelegramIcon } from '@/shared/assets/icons';
-import { getRouteFile } from '@/shared/config/routes/routes';
+import { getRouteFile, getRouteHome } from '@/shared/config/routes/routes';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Container } from '@/shared/lib/components/Container/Container';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -59,7 +59,10 @@ export const Navbar: FC<NavbarProps> = memo((props) => {
             <Row className={classNames(cls.Navbar, {}, [className])}>
                 <Container>
                     <Row justify='between'>
-                        <AppLink variant='soft' to={getRouteFile('null')}>{t('Файлы')}</AppLink>
+                        <Row gap='16'>
+                            <AppLink variant='soft' to={getRouteHome()}>{t('Главная')}</AppLink>
+                            <AppLink variant='soft' to={getRouteFile('null')}>{t('Файлы')}</AppLink>
+                        </Row>
                         <Row gap='4'>
                             <Link to='https://t.me/heildionis' target='_blank' className={cls.icon}>
                                 <TelegramIcon fill='white' />
