@@ -1,4 +1,4 @@
-import { FC, memo } from 'react';
+import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import cls from './PageError.module.scss';
@@ -15,9 +15,9 @@ export const PageError: FC<PageErrorProps> = memo((props: PageErrorProps) => {
     const { className } = props;
     const { t } = useTranslation('error');
 
-    const onReloadClick = () => {
+    const onReloadClick = useCallback(() => {
         window.location.reload();
-    };
+    }, []);
 
     return (
         <div className={classNames(cls.PageError, {}, [className])}>
