@@ -15,4 +15,5 @@ export const rtkApi = createApi({
         },
     }),
     endpoints: () => ({}),
+    tagTypes: ['File', 'User'],
 });
