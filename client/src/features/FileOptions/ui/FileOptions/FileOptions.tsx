@@ -1,5 +1,10 @@
 import { Menu } from '@headlessui/react';
-import { FC, memo, MouseEvent } from 'react';
+import {
+    FC,
+    memo,
+    MouseEvent,
+    useCallback,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 
 import cls from './FileOptions.module.scss';
@@ -20,13 +25,16 @@ interface FileOptionsProps {
 
 export const FileOptions: FC<FileOptionsProps> = memo((props: FileOptionsProps) => {
     const {
-        className, onDeleteClick, onDownloadClick, isDir,
+        className,
+        onDeleteClick,
+        onDownloadClick,
+        isDir,
     } = props;
     const { t } = useTranslation();
 
-    const onOpenClick = (e: MouseEvent) => {
+    const onOpenClick = useCallback((e: MouseEvent) => {
         e.stopPropagation();
-    };
+    }, []);
 
     return (
         <div className={classNames(cls.FileOptions, {}, [className])} onClick={onOpenClick}>
