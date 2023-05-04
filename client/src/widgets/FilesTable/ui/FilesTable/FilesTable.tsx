@@ -5,8 +5,7 @@ import {
 } from 'react';
 import { useSelector } from 'react-redux';
 
-import { useFilesTable } from '../../api/filesTableApi';
-import { deleteFile } from '../../model/services/deleteFile';
+import { useDeleteFile, useFilesTable } from '../../api/filesTableApi';
 import { downloadFile } from '../../model/services/downloadFile';
 import { FilesTableHeader } from '../FilesTableHeader/FilesTableHeader';
 
@@ -34,11 +33,12 @@ export const FilesTable: FC<FilesTableProps> = memo((props: FilesTableProps) => 
     } = props;
     const dispatch = useAppDispatch();
     const { data, isLoading } = useFilesTable({ parentId }, { refetchOnMountOrArgChange: true });
+    const [deleteFile] = useDeleteFile();
     const view = useSelector(getFileView);
 
     const onDeleteClick = useCallback((file: FileEntity) => () => {
-        dispatch(deleteFile({ id: file.id }));
-    }, [dispatch]);
+        deleteFile({ id: file.id });
+    }, [deleteFile]);
 
     const onDownloadClick = useCallback((file: FileEntity) => () => {
         dispatch(downloadFile({ file }));
