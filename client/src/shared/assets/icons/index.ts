@@ -7,6 +7,7 @@ import garbage from './garbage.svg';
 import list from './menu.svg';
 import telegramLogo from './telegram.svg';
 import tile from './tile.svg';
+import upload from './upload.svg';
 
 export const BMSTUIcon = bmstuLogo;
 export const FolderIcon = folder;
@@ -17,3 +18,4 @@ export const ListIcon = list;
 export const MenuIcon = sidemenu;
 export const AuhtPersonIcon = authPerson;
 export const GarbageIcon = garbage;
+export const UploadIcon = upload;
