@@ -22,6 +22,7 @@
     "storybook": "start-storybook -p 6006 -c ./config/storybook",
     "build-storybook": "build-storybook",
     "generate:import:update": "npx ts-node ./scripts/updateImports.ts",
+    "generate:slice": "node ./scripts/createSlice/index.js",
     "postinstall": "rimraf ./node-modules/.cahce"
   },
   "devDependencies": {
@@ -71,6 +72,7 @@
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.7.3",
     "postcss": "^8.4.23",
+    "react-aria": "^3.24.0",
     "react-refresh": "^0.14.0",
     "rimraf": "^5.0.0",
     "sass": "^1.58.3",
