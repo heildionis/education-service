@@ -1,7 +1,6 @@
 import { FC, memo } from 'react';
 
 import { UIVariant } from '../global';
-import variants from '../global.module.scss';
 
 import cls from './Divider.module.scss';
 
@@ -16,9 +15,13 @@ interface DividerProps {
 }
 
 export const Divider: FC<DividerProps> = memo((props: DividerProps) => {
-    const { className, variant = 'small', color = 'primary' } = props;
+    const {
+        className,
+        variant = 'small',
+        color = 'primary',
+    } = props;
 
     return (
-        <hr className={classNames(cls.Divider, {}, [className, variants[variant], cls[color]])} />
+        <hr className={classNames(cls.Divider, {}, [className, cls[color], cls[variant]])} />
     );
 });

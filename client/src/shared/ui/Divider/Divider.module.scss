@@ -13,3 +13,23 @@
 .large {
     height: 0.3rem;
 }
+
+.primary {
+    background: var(--primary-color);
+}
+
+.secondary {
+    background: var(--secondary-color);
+}
+
+.soft {
+    background: var(--soft-color);
+}
+
+.accent {
+    background: var(--accent-color);
+}
+
+.disabled {
+    background: var(--disabled-color);
+}

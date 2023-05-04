@@ -25,6 +25,7 @@ interface TypographyProps extends HTMLAttributes<HTMLElement> {
     align?: TypographyAlign;
     noWrap?: boolean;
     fullWidth?: boolean;
+    disabled?: boolean;
     children: ReactNode;
 }
 
@@ -51,6 +52,7 @@ export const Typography: FC<TypographyProps> = memo((props: TypographyProps) => 
         align = 'inherit',
         noWrap = false,
         fullWidth = false,
+        disabled,
         ...otherProps
     } = props;
 
@@ -59,13 +61,14 @@ export const Typography: FC<TypographyProps> = memo((props: TypographyProps) => 
     const mods: Mods = {
         [cls.noWrap]: noWrap,
         [cls.fullWidth]: fullWidth,
+        [cls.disabled]: disabled,
     };
 
     const additional: Array<string | undefined> = [
         className,
-        cls[color],
+        variants[color],
         cls[align],
-        variants[variant],
+        cls[variant],
     ];
 
     const classes = classNames(cls.Typography, mods, additional);

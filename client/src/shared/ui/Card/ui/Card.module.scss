@@ -1,3 +1,27 @@
 .Card {
     border-radius: 0.25rem;
 }
+
+.primary {
+    background: var(--primary-color);
+}
+
+.secondary {
+    background: var(--secondary-color);
+}
+
+.soft {
+    background: var(--soft-color);
+}
+
+.accent {
+    background: var(--accent-color);
+}
+
+.disabled {
+    background: var(--disabled-color);
+}
+
+.fullWidth {
+    width: 100%;
+}

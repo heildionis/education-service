@@ -1,31 +1,38 @@
 import {
-    FC, HTMLAttributes, ReactNode,
+    ComponentPropsWithoutRef,
+    ReactNode,
+    forwardRef,
 } from 'react';
 
 import { UIVariant } from '../../global';
-import variants from '../global.module.scss';
 
 import cls from './Card.module.scss';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 
-interface CardProps extends HTMLAttributes<HTMLDivElement> {
+interface CardProps extends ComponentPropsWithoutRef<'div'> {
     className?: string;
     children: ReactNode;
     variant?: UIVariant;
+    fullWidth?: boolean;
 }
 
-export const Card: FC<CardProps> = (props: CardProps) => {
+export const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
     const {
         className,
         children,
         variant = 'soft',
+        fullWidth,
         ...otherProps
     } = props;
 
     return (
-        <div className={classNames(cls.Card, {}, [className, variants[variant]])} {...otherProps}>
+        <div
+            ref={ref}
+            className={classNames(cls.Card, { [cls.fullWidth]: fullWidth }, [className, cls[variant]])}
+            {...otherProps}
+        >
             {children}
         </div>
     );
-};
+});
