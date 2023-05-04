@@ -1,0 +1,35 @@
+.Dropzone {
+    display: grid;
+    min-height: 16rem;
+    border: 0.1rem dashed var(--primary-color);
+    cursor: pointer;
+    place-items: center;
+    transition: 0.3s;
+
+    &:hover {
+        filter: brightness(1.02);
+    }
+}
+
+.drop {
+    border: 0.1rem solid var(--secondary-color);
+}
+
+.input {
+    display: none;
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+.focus {
+    border: 0.1rem solid var(--secondary-color);
+}
+
+.readOnly {
+    cursor: auto;
+
+    &:hover {
+        filter: brightness(1);
+    }
+}
