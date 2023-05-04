@@ -1,20 +1,28 @@
 import { FC, memo } from 'react';
 
 import { UIVariant } from '../global';
-import variants from '../global.module.scss';
+
+import cls from './Icon.module.scss';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 
-interface IconProps {
+interface IconProps extends React.SVGProps<SVGSVGElement> {
     className?: string;
-    Svg: React.FC<React.SVGProps<SVGSVGElement>>;
+    Svg: FC<React.SVGProps<SVGSVGElement>>;
     variant?: UIVariant;
+    disabled?: boolean;
 }
 
-export const Icon: FC<IconProps> = memo((props: IconProps) => {
-    const { className, Svg, variant = 'primary' } = props;
+export const Icon = memo((props: IconProps) => {
+    const {
+        className,
+        Svg,
+        variant = 'primary',
+        disabled,
+        ...otherProps
+    } = props;
 
     return (
-        <Svg className={classNames('', {}, [className, variants[variant]])} />
+        <Svg className={classNames('', { [cls.disabled]: disabled }, [className, cls[variant]])} {...otherProps} />
     );
 });

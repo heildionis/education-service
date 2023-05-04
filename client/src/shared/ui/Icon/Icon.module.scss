@@ -1,0 +1,20 @@
+.primary {
+    fill: var(--primary-color);
+}
+
+.secondary {
+    fill: var(--secondary-color);
+}
+
+.soft {
+    fill: var(--soft-color);
+}
+
+.accent {
+    fill: var(--accent-color);
+}
+
+.disabled {
+    // fill: var(--disabled-color);
+    opacity: 0.4;
+}

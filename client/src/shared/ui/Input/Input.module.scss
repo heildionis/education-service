@@ -36,3 +36,11 @@
 .large {
     font: var(--font-xl);
 }
+
+.readOnly {
+    opacity: 0.8;
+
+    &:focus {
+        border: 0.1rem solid inherit;
+    }
+}

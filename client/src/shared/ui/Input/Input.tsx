@@ -1,30 +1,29 @@
 import {
     ChangeEvent,
-    forwardRef,
     InputHTMLAttributes,
-    memo,
 } from 'react';
 
 import { UIVariant } from '../global';
-import variants from '../global.module.scss';
 
 import cls from './Input.module.scss';
 
-import { Additional, classNames } from '@/shared/lib/classNames/classNames';
+import { typedMemo } from '@/shared/constants/types';
+import { Additional, Mods, classNames } from '@/shared/lib/classNames/classNames';
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value' | 'label' | 'size'>
 type InputSize = 'small' | 'medium' | 'large';
 
-interface InputProps extends HTMLInputProps {
+interface InputProps<T extends string> extends HTMLInputProps {
     className?: string;
-    onChange?: (value: string) => void;
+    onChange?: (value: T) => void;
     value?: string;
     size?: InputSize,
     variant?: UIVariant;
     fullWidth?: boolean;
+    readOnly?: boolean;
 }
 
-export const ForwardInput = (forwardRef<HTMLInputElement, InputProps>(((props, ref) => {
+export const Input = typedMemo(<T extends string>(props: InputProps<T>) => {
     const {
         className,
         onChange,
@@ -33,29 +32,34 @@ export const ForwardInput = (forwardRef<HTMLInputElement, InputProps>(((props, r
         fullWidth = false,
         size = 'small',
         variant = 'primary',
+        readOnly = false,
         ...otherProps
     } = props;
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        onChange?.(e.target.value);
+        onChange?.(e.target.value as T);
     };
 
     const additional: Additional = [
         cls[size],
-        variants[variant],
+        cls[variant],
         className,
     ];
+
+    const mods: Mods = {
+        [cls.fullWidth]: fullWidth,
+        [cls.readOnly]: readOnly,
+    };
 
     return (
         <input
             placeholder={placeholder}
-            ref={ref}
-            className={classNames(cls.input, { [cls.fullWidth]: fullWidth }, additional)}
+            className={classNames(cls.input, mods, additional)}
             value={value}
             onChange={onChangeHandler}
+            readOnly={readOnly}
+            disabled={readOnly}
             {...otherProps}
         />
     );
-})));
-
-export const Input = memo(ForwardInput);
+});
