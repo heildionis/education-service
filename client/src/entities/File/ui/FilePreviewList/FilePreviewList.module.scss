@@ -1,0 +1,9 @@
+.FilePreviewList {
+    &>div {
+        padding: 0.5rem 1rem;
+    }
+
+    &> :nth-child(odd) {
+        background: #aeaeae0f;
+    }
+}
