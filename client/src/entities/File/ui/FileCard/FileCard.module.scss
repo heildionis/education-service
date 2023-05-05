@@ -1,6 +1,6 @@
 .tile {
     display: grid;
-    height: 4rem;
+    min-width: 5rem;
     cursor: pointer;
     gap: 0.5rem;
     place-items: center;

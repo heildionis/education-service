@@ -4,8 +4,9 @@
 
 .tile {
     display: grid;
-    grid-gap: 2rem 0.5rem;
-    grid-template-columns: repeat(auto-fill, minmax(4rem, 5rem));
+    gap: 2rem 0.5rem;
+    grid-template-columns: repeat(auto-fill, 6rem);
+    grid-template-rows: repeat(auto-fill, 3rem);
 }
 
 .list {

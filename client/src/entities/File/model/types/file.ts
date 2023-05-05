@@ -14,3 +14,7 @@ export interface FileEntity {
     parentId: number;
     accessLink: null;
 }
+
+export interface FilePreviews {
+    [fileName: string]: number;
+}

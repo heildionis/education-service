@@ -1,2 +1,9 @@
+export { FilePreviewList } from './ui/FilePreviewList/FilePreviewList';
+
+export { FilePreview } from './ui/FilePreview/FilePreview';
+export { FileProgress } from './ui/FileProgress/FileProgress';
 export { FileList } from './ui/FileList/FileList';
-export type { FileView, FileType, FileEntity } from './model/types/file';
+
+export type {
+    FileView, FileType, FileEntity, FilePreviews,
+} from './model/types/file';

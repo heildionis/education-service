@@ -53,7 +53,7 @@ export const FileCard: FC<FileCardProps> = (props: FileCardProps) => {
                             Svg={file.type === 'dir' ? FolderIcon : FileIcon}
                             variant='secondary'
                         />
-                        <Typography variant='h5' color='secondary'>
+                        <Typography variant='h5'>
                             {file.name}
                         </Typography>
                     </Row>
