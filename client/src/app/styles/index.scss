@@ -4,10 +4,6 @@
 @import './themes/light';
 @import './fonts/fonts';
 
-body {
-    color: var(--primary-color);
-    font: var(--font-m);
-}
 
 .app {
     min-height: 100vh;
@@ -17,4 +13,26 @@ body {
 .content-page {
     position: relative;
     padding-top: 1.25rem;
+}
+
+body {
+    color: var(--primary-color);
+    font: var(--font-m);
+}
+
+
+::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+    background: #eeeeeeb8;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
 }
