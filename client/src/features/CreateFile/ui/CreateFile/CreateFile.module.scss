@@ -1,0 +1,13 @@
+.CreateFile {
+    display: grid;
+    overflow: hidden;
+    width: 100%;
+    padding: 0.5rem;
+    background: var(--soft-color);
+    box-shadow: 0 0.1rem 0.25rem var(--disabled-color);
+    gap: 0.75rem;
+}
+
+.btn {
+    margin-left: auto;
+}
