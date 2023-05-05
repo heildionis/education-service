@@ -34,12 +34,20 @@
     align-items: end;
 }
 
+.alignStretch {
+    align-items: stretch;
+}
+
 .directionRow {
     flex-direction: row;
 }
 
 .directionColumn {
     flex-direction: column;
+}
+
+.gap0 {
+    gap: 0;
 }
 
 .gap2 {

@@ -5,9 +5,9 @@ import cls from './Flex.module.scss';
 import { Additional, Mods, classNames } from '@/shared/lib/classNames/classNames';
 
 export type FlexJustify = 'start' | 'center' | 'end' | 'between' | 'around';
-export type FlexAlign = 'start' | 'center' | 'end';
+export type FlexAlign = 'start' | 'center' | 'end' | 'stretch';
 export type FlexDirection = 'row' | 'column';
-export type FlexGap = '2' | '4' | '8' | '16' | '32';
+export type FlexGap = '0' |'2' | '4' | '8' | '16' | '32';
 
 const justifyClasses: Record<FlexJustify, string> = {
     start: cls.justifyStart,
@@ -21,6 +21,7 @@ const alignClasses: Record<FlexAlign, string> = {
     start: cls.alignStart,
     center: cls.alignCenter,
     end: cls.alignEnd,
+    stretch: cls.alignStretch,
 };
 
 const directionClasses: Record<FlexDirection, string> = {
@@ -29,6 +30,7 @@ const directionClasses: Record<FlexDirection, string> = {
 };
 
 const gapClasses: Record<FlexGap, string> = {
+    0: cls.gap0,
     2: cls.gap2,
     4: cls.gap4,
     8: cls.gap8,

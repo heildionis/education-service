@@ -35,6 +35,7 @@ interface DropzoneProps {
     maxFiles?: number;
     accept?: string;
     onDrop?: (files: File[]) => void;
+    onUpload?: (files: File[]) => void;
 }
 
 export const Dropzone: FC<DropzoneProps> = memo((props: DropzoneProps) => {
@@ -49,11 +50,17 @@ export const Dropzone: FC<DropzoneProps> = memo((props: DropzoneProps) => {
         autoFocus,
         accept = '*',
         onDrop,
+        onUpload,
     } = props;
     const ref = useRef(null);
     const inputRef = useRef<HTMLInputElement>(null);
     const [isFocused, setIsFocused] = useState(autoFocus);
     const [hasError, setHasError] = useState(false);
+
+    const bindHandler = useCallback((files: File[]) => {
+        onDrop?.(files);
+        onUpload?.(files);
+    }, [onDrop, onUpload]);
 
     const { dropProps, isDropTarget } = useDrop({
         ref,
@@ -64,19 +71,19 @@ export const Dropzone: FC<DropzoneProps> = memo((props: DropzoneProps) => {
 
             setHasError(false);
 
-            const items = await Promise.all((() => {
-                const items = e.items.filter((item) => item.kind === 'file') as FileDropItem[];
-                const files = items.map((item) => item.getFile());
+            const files = await Promise.all((() => {
+                const itemsKindOfFile = e.items.filter((item) => item.kind === 'file') as FileDropItem[];
+                const filesFromItems = itemsKindOfFile.map((item) => item.getFile());
 
-                return files;
+                return filesFromItems;
             })());
 
-            if (items.length > maxFiles) {
+            if (files.length > maxFiles) {
                 setHasError(true);
                 return;
             }
 
-            onDrop?.(items);
+            bindHandler(files);
         },
     });
 
@@ -107,7 +114,7 @@ export const Dropzone: FC<DropzoneProps> = memo((props: DropzoneProps) => {
                 return;
             }
 
-            onDrop?.(files);
+            bindHandler(files);
         }
     };
 
@@ -121,7 +128,6 @@ export const Dropzone: FC<DropzoneProps> = memo((props: DropzoneProps) => {
         <Card
             ref={ref}
             className={classNames(cls.Dropzone, mods, [className])}
-            fullWidth
             {...dropProps}
             {...focusWithinProps}
             onClick={onInputClick}

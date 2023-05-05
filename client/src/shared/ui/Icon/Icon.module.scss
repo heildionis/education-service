@@ -14,6 +14,10 @@
     fill: var(--accent-color);
 }
 
+.danger {
+    fill: var(--danger-color);
+}
+
 .disabled {
     // fill: var(--disabled-color);
     opacity: 0.4;
