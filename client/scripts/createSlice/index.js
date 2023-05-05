@@ -12,7 +12,7 @@ const args = minimist(process.argv.slice(2), {
     },
 });
 
-const layers = ['features', 'entites', 'pages'];
+const layers = ['features', 'entites', 'pages', 'widgets'];
 
 if (!layer || !layer.includes(layer)) {
     throw new Error(`Укажите слой ${layers.join(' или ')}.`);
