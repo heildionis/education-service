@@ -1,1 +1,1 @@
-export type UIVariant = 'primary' | 'secondary' | 'accent' | 'soft' | 'disabled';
+export type UIVariant = 'primary' | 'secondary' | 'accent' | 'soft' | 'disabled' | 'danger';
