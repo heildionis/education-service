@@ -75,7 +75,7 @@ export class UserController {
 
 			res.cookie(Cookies.REFRESH_TOKEN.name, user.refreshToken,{
 				maxAge: Cookies.REFRESH_TOKEN.lifeTime,
-				httpOnly: true,
+				httpOnly: true,	
 			});
 
 			return res.json(user);
