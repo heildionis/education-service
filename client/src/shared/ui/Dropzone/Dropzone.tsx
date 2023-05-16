@@ -36,6 +36,7 @@ interface DropzoneProps {
     accept?: string;
     onDrop?: (files: File[]) => void;
     onUpload?: (files: File[]) => void;
+    fullWidth?: boolean;
 }
 
 export const Dropzone: FC<DropzoneProps> = memo((props: DropzoneProps) => {
@@ -51,6 +52,7 @@ export const Dropzone: FC<DropzoneProps> = memo((props: DropzoneProps) => {
         accept = '*',
         onDrop,
         onUpload,
+        fullWidth,
     } = props;
     const ref = useRef(null);
     const inputRef = useRef<HTMLInputElement>(null);
@@ -131,6 +133,7 @@ export const Dropzone: FC<DropzoneProps> = memo((props: DropzoneProps) => {
             {...dropProps}
             {...focusWithinProps}
             onClick={onInputClick}
+            fullWidth={fullWidth}
         >
             <Column
                 gap='8'
