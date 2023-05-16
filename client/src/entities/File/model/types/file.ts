@@ -15,6 +15,6 @@ export interface FileEntity {
     accessLink: null;
 }
 
-export interface FilePreviews {
-    [fileName: string]: number;
+export interface FilePreviewType {
+    [fileName: string]: number | null;
 }
