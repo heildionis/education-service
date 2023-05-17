@@ -1,0 +1,21 @@
+.FileUploader {
+    height: 18rem;
+}
+
+.preview {
+    width: 100%;
+    flex: 0 1 50%;
+    padding: 0.5rem;
+    box-shadow: 0 0.1rem 0.25rem var(--disabled-color);
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.creator {}
+
+.title {
+    margin-bottom: 0.5rem;
+}

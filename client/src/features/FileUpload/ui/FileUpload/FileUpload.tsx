@@ -40,7 +40,6 @@ export const FileUpload: FC<FileUploadProps> = memo((props: FileUploadProps) => 
             <div className={classNames(cls.FileUpload, {}, [className])}>
                 <Button
                     className={cls.labelWrapper}
-                    color='secondary'
                     variant='clear'
                     isAnimated={false}
                     fullWidth

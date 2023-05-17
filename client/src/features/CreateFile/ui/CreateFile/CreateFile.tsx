@@ -29,6 +29,7 @@ export const CreateFile = memo((props: CreateFileProps) => {
                 variant='h5'
                 component='h3'
                 align='center'
+                fullWidth
             >
                 Application
             </Typography>
@@ -38,6 +39,7 @@ export const CreateFile = memo((props: CreateFileProps) => {
                 onDrop={onDrop}
                 onUpload={onUpload}
                 multiple
+                fullWidth
             />
             <Button className={cls.btn} fullWidth>
                 Send form

@@ -3,6 +3,7 @@ import { FC, memo } from 'react';
 import cls from './FilesController.module.scss';
 
 import { CreateDirForm } from '@/features/CreateDir';
+import { CreateFile } from '@/features/CreateFile';
 import { FileUpload } from '@/features/FileUpload';
 import { BMSTUIcon } from '@/shared/assets/icons';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -24,6 +25,7 @@ export const FilesController: FC<SidebarProps> = memo((props: SidebarProps) => {
                 <Icon className={cls.icon} Svg={BMSTUIcon} variant='soft' />
             </Row>
             <Column gap='8'>
+                <CreateFile />
                 <FileUpload parentId={parentId} />
                 <CreateDirForm parentId={parentId} />
             </Column>

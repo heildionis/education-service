@@ -5,7 +5,7 @@ import {
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Container } from '@/shared/lib/components/Container/Container';
-import { Typography } from '@/shared/ui/Typography/Typography';
+import { FileUploader } from '@/widgets/FileUploader';
 import { Page } from '@/widgets/Page';
 
 interface HomePageProps {
@@ -18,7 +18,7 @@ const HomePage: FC<HomePageProps> = memo((props) => {
     return (
         <Page className={classNames('', {}, [className])}>
             <Container>
-                <Typography>Главная страница</Typography>
+                <FileUploader />
             </Container>
         </Page>
     );

@@ -1,0 +1,8 @@
+.FilePreviewDelete {
+    cursor: pointer;
+
+    &:hover {
+        fill: var(--danger-color);
+        stroke: var(--danger-color);
+    }
+}

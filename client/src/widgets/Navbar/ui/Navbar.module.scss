@@ -1,6 +1,10 @@
 .Navbar {
+    position: sticky;
+    z-index: 10000;
+    top: 0;
     height: var(--navbar-height);
     background: var(--inverted-bg-color);
+
 }
 
 .icon {

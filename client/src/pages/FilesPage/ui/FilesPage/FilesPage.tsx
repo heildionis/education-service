@@ -1,6 +1,4 @@
-import {
-    memo,
-} from 'react';
+import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
@@ -8,7 +6,12 @@ import { useFileNavigator } from '../../lib/hooks/useFileNavigator/useFileNaviga
 import { getFilesPageCurrentDir } from '../../model/selectors/filesPageSelectors';
 import { filesPageReducer } from '../../model/slice/filesPageSlice';
 
-import { DynamicModuleLoader, ReducerList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import cls from './FilesPage.module.scss';
+
+import {
+    DynamicModuleLoader,
+    ReducerList,
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Row } from '@/shared/ui/Stack';
 import { FilesController } from '@/widgets/FilesContoller';
 import { FilesTable } from '@/widgets/FilesTable';
@@ -27,7 +30,10 @@ const FilesPage = memo(() => {
         <DynamicModuleLoader reducers={reducers}>
             <Page>
                 <Row gap='32' fullWidth align='start'>
-                    <FilesController parentId={currentDir} />
+                    <FilesController
+                        className={cls.sticky}
+                        parentId={currentDir}
+                    />
                     <FilesTable
                         parentId={currentDir}
                         onFileClick={onOpen}
